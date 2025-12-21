@@ -1,0 +1,10 @@
+{
+  "name": "spirit420-website",
+  "version": "1.0.0",
+  "description": "Cannabis shop website with Telegram notifications",
+  "private": true,
+  "scripts": {
+    "dev": "vercel dev",
+    "deploy": "vercel --prod"
+  }
+}

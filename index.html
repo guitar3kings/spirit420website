@@ -5,8 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>spirit420 - Cannabis Shop Phuket</title>
     <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%);
@@ -14,9 +18,20 @@
             min-height: 100vh;
         }
 
-        .page { display: none; min-height: 100vh; padding: 20px; }
-        .page.active { display: block; }
-        .container { max-width: 1200px; margin: 0 auto; }
+        .page {
+            display: none;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .page.active {
+            display: block;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
 
         header {
             text-align: center;
@@ -27,9 +42,19 @@
             border: 2px solid rgba(127, 255, 0, 0.2);
         }
 
-        h1 { font-size: 3em; color: #7FFF00; margin-bottom: 10px; text-shadow: 0 0 20px rgba(127, 255, 0, 0.3); }
-        .subtitle { font-size: 1.2em; color: #a0a0a0; margin-bottom: 20px; }
-        
+        h1 {
+            font-size: 3em;
+            color: #7FFF00;
+            margin-bottom: 10px;
+            text-shadow: 0 0 20px rgba(127, 255, 0, 0.3);
+        }
+
+        .subtitle {
+            font-size: 1.2em;
+            color: #a0a0a0;
+            margin-bottom: 20px;
+        }
+
         .disclaimer {
             background: rgba(255, 100, 100, 0.1);
             border: 2px solid rgba(255, 100, 100, 0.3);
@@ -108,11 +133,31 @@
             box-shadow: 0 10px 30px rgba(127, 255, 0, 0.2);
         }
 
-        .product-name { font-size: 1.4em; color: #7FFF00; margin-bottom: 10px; }
-        .product-type { font-size: 1.1em; margin-bottom: 8px; opacity: 0.9; }
-        .product-thc { color: #FFD700; font-weight: bold; margin-bottom: 8px; }
-        .product-price { font-size: 1.3em; color: #7FFF00; margin: 15px 0; font-weight: bold; }
-        
+        .product-name {
+            font-size: 1.4em;
+            color: #7FFF00;
+            margin-bottom: 10px;
+        }
+
+        .product-type {
+            font-size: 1.1em;
+            margin-bottom: 8px;
+            opacity: 0.9;
+        }
+
+        .product-thc {
+            color: #FFD700;
+            font-weight: bold;
+            margin-bottom: 8px;
+        }
+
+        .product-price {
+            font-size: 1.3em;
+            color: #7FFF00;
+            margin: 15px 0;
+            font-weight: bold;
+        }
+
         .product-special {
             background: rgba(255, 215, 0, 0.1);
             border: 1px solid rgba(255, 215, 0, 0.3);
@@ -159,7 +204,9 @@
             transition: all 0.3s;
         }
 
-        .back-btn:hover { background: rgba(127, 255, 0, 0.2); }
+        .back-btn:hover {
+            background: rgba(127, 255, 0, 0.2);
+        }
 
         .cart-content {
             background: rgba(255, 255, 255, 0.05);
@@ -208,6 +255,24 @@
             cursor: pointer;
         }
 
+        .delivery-zone {
+            margin: 20px 0;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 10px;
+        }
+
+        .zone-select {
+            width: 100%;
+            padding: 12px;
+            background: rgba(255, 255, 255, 0.1);
+            border: 2px solid rgba(127, 255, 0, 0.3);
+            border-radius: 10px;
+            color: #e0e0e0;
+            font-size: 1em;
+            margin-top: 10px;
+        }
+
         .total-section {
             border-top: 2px solid rgba(127, 255, 0, 0.3);
             padding-top: 20px;
@@ -225,6 +290,49 @@
             font-size: 1.5em;
             color: #7FFF00;
             font-weight: bold;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: #7FFF00;
+            font-weight: bold;
+        }
+
+        .form-group input, .form-group textarea, .form-group select {
+            width: 100%;
+            padding: 12px;
+            background: rgba(255, 255, 255, 0.1);
+            border: 2px solid rgba(127, 255, 0, 0.3);
+            border-radius: 10px;
+            color: #e0e0e0;
+            font-size: 1em;
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+
+        .map-container {
+            width: 100%;
+            height: 400px;
+            border-radius: 10px;
+            overflow: hidden;
+            margin-top: 10px;
+            border: 2px solid rgba(127, 255, 0, 0.3);
+        }
+
+        .selected-address {
+            margin-top: 10px;
+            padding: 10px;
+            background: rgba(127, 255, 0, 0.1);
+            border-radius: 8px;
+            color: #7FFF00;
         }
 
         .submit-btn {
@@ -265,7 +373,31 @@
             z-index: 1000;
         }
 
-        .cart-badge:hover { transform: scale(1.1); }
+        .cart-badge:hover {
+            transform: scale(1.1);
+        }
+
+        .qr-code {
+            text-align: center;
+            padding: 30px;
+            background: white;
+            border-radius: 15px;
+            margin: 30px auto;
+            max-width: 400px;
+        }
+
+        .order-summary {
+            background: rgba(255, 255, 255, 0.03);
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+        }
+
+        .success-icon {
+            font-size: 5em;
+            text-align: center;
+            margin: 20px 0;
+        }
 
         .contact-buttons {
             display: flex;
@@ -304,12 +436,25 @@
         }
 
         @media (max-width: 768px) {
-            h1 { font-size: 2em; }
-            .products { grid-template-columns: 1fr; }
-            .contact-buttons { flex-direction: column; }
-            .cart-page-header { flex-direction: column; gap: 15px; }
+            h1 {
+                font-size: 2em;
+            }
+            
+            .products {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-buttons {
+                flex-direction: column;
+            }
+
+            .cart-page-header {
+                flex-direction: column;
+                gap: 15px;
+            }
         }
     </style>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBFw0Qbyq9zTFTd-tUY6dZWTgaQzuU17R8&libraries=places"></script>
 </head>
 <body>
     <!-- Catalog Page -->
@@ -339,30 +484,102 @@
     <div class="page" id="cartPage">
         <div class="container">
             <div class="cart-page-header">
-                <button class="back-btn" onclick="goToCatalog()" id="backBtn">← Back to Catalog</button>
+                <button class="back-btn" onclick="goToCatalog()">← Back to Catalog</button>
                 <h2 style="color: #7FFF00;" id="cartTitle">🛒 Your Cart</h2>
                 <div></div>
             </div>
+
             <div id="cartContent"></div>
         </div>
     </div>
 
-    <!-- Order Confirmation -->
+    <!-- Order Form Page -->
     <div class="page" id="orderPage">
         <div class="container">
+            <div class="cart-page-header">
+                <button class="back-btn" onclick="goToCart()">← Back to Cart</button>
+                <h2 style="color: #7FFF00;" id="orderTitle">📋 Order Details</h2>
+                <div></div>
+            </div>
+
             <div class="cart-content">
-                <h2 style="color: #7FFF00; text-align: center; margin-bottom: 30px;" id="orderTitle">📦 Order Summary</h2>
-                <div id="orderSummary"></div>
-                <h3 style="color: #7FFF00; text-align: center; margin: 40px 0 20px;" id="contactTitle">Contact us to complete your order:</h3>
-                <div class="contact-buttons">
-                    <a href="#" id="whatsappLink" class="contact-btn" target="_blank">📲 WhatsApp</a>
-                    <a href="#" id="lineLink" class="contact-btn" target="_blank">💬 LINE</a>
+                <div class="form-group">
+                    <label id="nameLabel">Name:</label>
+                    <input type="text" id="customerName" placeholder="Your name" required>
                 </div>
-                <button class="submit-btn" onclick="newOrder()" id="newOrderBtn" style="margin-top: 20px;">🔄 New Order</button>
+
+                <div class="form-group">
+                    <label id="phoneLabel">Phone:</label>
+                    <input type="tel" id="customerPhone" placeholder="+66..." required>
+                </div>
+
+                <div class="form-group">
+                    <label id="addressLabel">Delivery Address (drag marker to your location):</label>
+                    <div class="map-container" id="map"></div>
+                    <div class="selected-address" id="selectedAddress">Move the marker to select your location</div>
+                </div>
+
+                <div class="form-group">
+                    <label id="timeLabel">Delivery Time:</label>
+                    <select id="deliveryTime">
+                        <option>Today 14:00-18:00</option>
+                        <option>Today 18:00-22:00</option>
+                        <option>Tomorrow 11:00-14:00</option>
+                        <option>Tomorrow 14:00-18:00</option>
+                        <option>Tomorrow 18:00-22:00</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label id="commentLabel">Comment (optional):</label>
+                    <textarea id="customerComment" placeholder="Any special requests?"></textarea>
+                </div>
+
+                <button class="submit-btn" onclick="submitOrder()" id="confirmBtn">✅ Confirm Order</button>
             </div>
         </div>
     </div>
 
+    <!-- Success Page -->
+    <div class="page" id="successPage">
+        <div class="container">
+            <div class="cart-content">
+                <div class="success-icon">✅</div>
+                <h2 style="color: #7FFF00; text-align: center; margin-bottom: 20px;" id="successTitle">Order Confirmed!</h2>
+                
+                <div class="order-summary">
+                    <p style="text-align: center; font-size: 1.5em; margin-bottom: 20px;">
+                        <span id="orderNumberLabel">Order #</span><span id="orderNumber" style="color: #7FFF00;"></span>
+                    </p>
+                    <div id="orderSummary"></div>
+                </div>
+
+                <div class="qr-code">
+                    <h3 style="color: #000; margin-bottom: 15px;" id="paymentTitle">💳 Payment via PromptPay</h3>
+                    <div id="qrCodeContainer"></div>
+                    <p style="color: #000; margin-top: 15px; font-weight: bold;" id="paymentAmount"></p>
+                </div>
+
+                <div style="background: rgba(255, 255, 255, 0.05); padding: 20px; border-radius: 10px; margin: 20px 0;">
+                    <h3 style="color: #7FFF00; margin-bottom: 15px;" id="nextStepsTitle">📱 Next Steps:</h3>
+                    <ol style="line-height: 2; padding-left: 20px;">
+                        <li id="step1">Scan QR code and pay via PromptPay (or pay cash to courier)</li>
+                        <li id="step2">We will contact you via WhatsApp or LINE shortly</li>
+                        <li id="step3">Delivery within the selected time slot</li>
+                    </ol>
+                </div>
+
+                <div class="contact-buttons">
+                    <a href="https://wa.me/66611483677" class="contact-btn" target="_blank">📲 WhatsApp</a>
+                    <a href="https://line.me/R/ti/p/%40spirit420" class="contact-btn" target="_blank">💬 LINE</a>
+                </div>
+
+                <button class="submit-btn" onclick="newOrder()" id="newOrderBtn">🔄 Make Another Order</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/qrcode@1.5.3/build/qrcode.min.js"></script>
     <script>
         const products = [
             {name: 'Miami', type: 'sativa', thc: 27, price: 250, category: 'sorts'},
@@ -384,35 +601,57 @@
             en: {
                 subtitle: 'Licensed cannabis shop, Phuket',
                 disclaimer: '⚠️ This website is for informational purposes only. Access limited to persons 20+ years of age. By continuing, you confirm compliance with Thai law.',
-                allProducts: 'All', sativa: '☀️ Sativa', indica: '🌙 Indica', hybrid: '🌓 Hybrid', prerolled: '🚬 Joints',
-                cartTitle: '🛒 Your Cart', subtotal: 'Subtotal:', total: 'TOTAL:', proceedBtn: 'Checkout →',
-                addToCart: 'Add to Cart', emptyCart: 'Your cart is empty', startShopping: 'Start Shopping',
-                backBtn: '← Back to Catalog', orderTitle: '📦 Order Summary', contactTitle: 'Contact us to complete your order:',
-                newOrderBtn: '🔄 New Order'
+                allProducts: 'All Products', sativa: '☀️ Sativa', indica: '🌙 Indica', hybrid: '🌓 Hybrid', prerolled: '🚬 Prerolled',
+                cartTitle: '🛒 Your Cart', zoneLabel: '📍 Delivery Zone:', subtotalLabel: 'Subtotal:', deliveryLabel: 'Delivery:', totalLabel: 'TOTAL:',
+                proceedBtn: 'Proceed to Order →', orderTitle: '📋 Order Details', nameLabel: 'Name:', phoneLabel: 'Phone:',
+                addressLabel: 'Delivery Address (drag marker to your location):', timeLabel: 'Delivery Time:', commentLabel: 'Comment (optional):',
+                confirmBtn: '✅ Confirm Order', successTitle: 'Order Confirmed!', orderNumberLabel: 'Order #',
+                paymentTitle: '💳 Payment via PromptPay', nextStepsTitle: '📱 Next Steps:',
+                step1: 'Scan QR code and pay via PromptPay (or pay cash to courier)',
+                step2: 'We will contact you via WhatsApp or LINE shortly',
+                step3: 'Delivery within the selected time slot',
+                newOrderBtn: '🔄 Make Another Order', addToCart: 'Add to Cart', emptyCart: 'Your cart is empty',
+                startShopping: 'Start Shopping'
             },
             ru: {
                 subtitle: 'Лицензированный магазин каннабиса, Пхукет',
                 disclaimer: '⚠️ Этот сайт носит исключительно информационный характер. Доступ только для лиц 20+. Продолжая, вы подтверждаете соблюдение законов Таиланда.',
-                allProducts: 'Все', sativa: '☀️ Sativa', indica: '🌙 Indica', hybrid: '🌓 Hybrid', prerolled: '🚬 Преролы',
-                cartTitle: '🛒 Ваша корзина', subtotal: 'Сумма:', total: 'ИТОГО:', proceedBtn: 'Оформить →',
-                addToCart: 'В корзину', emptyCart: 'Корзина пуста', startShopping: 'Начать покупки',
-                backBtn: '← Назад', orderTitle: '📦 Ваш заказ', contactTitle: 'Свяжитесь с нами для завершения заказа:',
-                newOrderBtn: '🔄 Новый заказ'
+                allProducts: 'Все товары', sativa: '☀️ Sativa', indica: '🌙 Indica', hybrid: '🌓 Hybrid', prerolled: '🚬 Преролы',
+                cartTitle: '🛒 Ваша корзина', zoneLabel: '📍 Зона доставки:', subtotalLabel: 'Сумма:', deliveryLabel: 'Доставка:', totalLabel: 'ИТОГО:',
+                proceedBtn: 'Оформить заказ →', orderTitle: '📋 Данные заказа', nameLabel: 'Имя:', phoneLabel: 'Телефон:',
+                addressLabel: 'Адрес доставки (перетащите маркер на карте):', timeLabel: 'Время доставки:', commentLabel: 'Комментарий (необязательно):',
+                confirmBtn: '✅ Подтвердить заказ', successTitle: 'Заказ подтвержден!', orderNumberLabel: 'Заказ №',
+                paymentTitle: '💳 Оплата через PromptPay', nextStepsTitle: '📱 Что дальше:',
+                step1: 'Отсканируйте QR-код и оплатите через PromptPay (или наличными курьеру)',
+                step2: 'Мы свяжемся с вами через WhatsApp или LINE в ближайшее время',
+                step3: 'Доставка в выбранное время',
+                newOrderBtn: '🔄 Сделать новый заказ', addToCart: 'В корзину', emptyCart: 'Корзина пуста',
+                startShopping: 'Начать покупки'
             },
             th: {
                 subtitle: 'ร้านกัญชาที่ได้รับใบอนุญาต ภูเก็ต',
                 disclaimer: '⚠️ เว็บไซต์นี้จัดทำขึ้นเพื่อให้ข้อมูลเท่านั้น สำหรับผู้ที่มีอายุ 20 ปีขึ้นไปเท่านั้น',
-                allProducts: 'ทั้งหมด', sativa: '☀️ Sativa', indica: '🌙 Indica', hybrid: '🌓 Hybrid', prerolled: '🚬 พรีโรล',
-                cartTitle: '🛒 ตะกร้า', subtotal: 'รวม:', total: 'ทั้งหมด:', proceedBtn: 'ชำระเงิน →',
-                addToCart: 'เพิ่ม', emptyCart: 'ตะกร้าว่าง', startShopping: 'เริ่มช็อป',
-                backBtn: '← กลับ', orderTitle: '📦 คำสั่งซื้อ', contactTitle: 'ติดต่อเราเพื่อทำรายการให้เสร็จ:',
-                newOrderBtn: '🔄 สั่งใหม่'
+                allProducts: 'สินค้าทั้งหมด', sativa: '☀️ Sativa', indica: '🌙 Indica', hybrid: '🌓 Hybrid', prerolled: '🚬 พรีโรล',
+                cartTitle: '🛒 ตะกร้าของคุณ', zoneLabel: '📍 เขตจัดส่ง:', subtotalLabel: 'รวม:', deliveryLabel: 'ค่าจัดส่ง:', totalLabel: 'ทั้งหมด:',
+                proceedBtn: 'ดำเนินการสั่งซื้อ →', orderTitle: '📋 รายละเอียดคำสั่งซื้อ', nameLabel: 'ชื่อ:', phoneLabel: 'โทรศัพท์:',
+                addressLabel: 'ที่อยู่จัดส่ง (ลากตัวหมุดบนแผนที่):', timeLabel: 'เวลาจัดส่ง:', commentLabel: 'หมายเหตุ:',
+                confirmBtn: '✅ ยืนยันคำสั่งซื้อ', successTitle: 'ยืนยันคำสั่งซื้อแล้ว!', orderNumberLabel: 'คำสั่งซื้อ #',
+                paymentTitle: '💳 ชำระเงินผ่าน PromptPay', nextStepsTitle: '📱 ขั้นตอนถัดไป:',
+                step1: 'สแกน QR code และชำระผ่าน PromptPay',
+                step2: 'เราจะติดต่อคุณผ่าน WhatsApp หรือ LINE',
+                step3: 'จัดส่งภายในช่วงเวลาที่เลือก',
+                newOrderBtn: '🔄 สั่งซื้อใหม่', addToCart: 'เพิ่มลงตะกร้า', emptyCart: 'ตะกร้าว่าง',
+                startShopping: 'เริ่มช็อปปิ้ง'
             }
         };
 
         let cart = [];
         let currentFilter = 'all';
         let currentLang = 'en';
+        let map, marker;
+        let selectedLocation = {lat: 7.884528, lng: 98.365056};
+        let selectedAddress = '';
+
         const typeEmojis = {sativa: '☀️', indica: '🌙', hybrid: '🌓'};
 
         function setLang(lang) {
@@ -474,13 +713,20 @@
         function addToCart(index) {
             const product = products[index];
             const existing = cart.find(item => item.name === product.name);
-            if (existing) { existing.quantity++; } 
-            else { cart.push({...product, quantity: 1}); }
+            
+            if (existing) {
+                existing.quantity++;
+            } else {
+                cart.push({...product, quantity: 1});
+            }
+            
             updateCartBadge();
         }
 
         function updateCartBadge() {
-            document.getElementById('cartBadge').textContent = cart.reduce((sum, item) => sum + item.quantity, 0);
+            const badge = document.getElementById('cartBadge');
+            const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+            badge.textContent = totalItems;
         }
 
         function goToCart() {
@@ -494,10 +740,14 @@
             document.getElementById('catalogPage').classList.add('active');
         }
 
+        function goToOrder() {
+            document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+            document.getElementById('orderPage').classList.add('active');
+            initMap();
+        }
+
         function renderCart() {
             const t = translations[currentLang];
-            document.getElementById('cartTitle').textContent = t.cartTitle;
-            document.getElementById('backBtn').textContent = t.backBtn;
             const container = document.getElementById('cartContent');
             
             if (cart.length === 0) {
@@ -512,6 +762,7 @@
             }
 
             let html = '<div class="cart-content">';
+            
             cart.forEach((item, index) => {
                 html += `
                     <div class="cart-item">
@@ -529,27 +780,47 @@
                 `;
             });
 
-            const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
             html += `
+                <div class="delivery-zone">
+                    <label style="color: #7FFF00; font-weight: bold;">${t.zoneLabel}</label>
+                    <select class="zone-select" id="deliveryZone" onchange="updateTotal()">
+                        <option value="0">Select delivery zone</option>
+                        <option value="0">Phuket Town Center - Free</option>
+                        <option value="100">Chalong, Rawai - ฿100</option>
+                        <option value="150">Patong, Karon, Kata - ฿150</option>
+                        <option value="200">Bang Tao, Surin, Kamala - ฿200</option>
+                        <option value="250">Other areas - ฿250</option>
+                    </select>
+                </div>
+
                 <div class="total-section">
                     <div class="total-line">
-                        <span>${t.subtotal}</span>
-                        <span>฿${total}</span>
+                        <span>${t.subtotalLabel}</span>
+                        <span id="subtotal">฿0</span>
+                    </div>
+                    <div class="total-line">
+                        <span>${t.deliveryLabel}</span>
+                        <span id="deliveryCost">฿0</span>
                     </div>
                     <div class="total-line total-final">
-                        <span>${t.total}</span>
-                        <span>฿${total}</span>
+                        <span>${t.totalLabel}</span>
+                        <span id="total">฿0</span>
                     </div>
                 </div>
-                <button class="submit-btn" onclick="checkout()">${t.proceedBtn}</button>
-            </div>`;
+
+                <button class="submit-btn" onclick="proceedToOrder()">${t.proceedBtn}</button>
+            </div>
+            `;
 
             container.innerHTML = html;
+            updateTotal();
         }
 
         function changeQty(index, change) {
             cart[index].quantity += change;
-            if (cart[index].quantity <= 0) { cart.splice(index, 1); }
+            if (cart[index].quantity <= 0) {
+                cart.splice(index, 1);
+            }
             updateCartBadge();
             renderCart();
         }
@@ -560,42 +831,168 @@
             renderCart();
         }
 
-        function checkout() {
-            const t = translations[currentLang];
-            document.getElementById('orderTitle').textContent = t.orderTitle;
-            document.getElementById('contactTitle').textContent = t.contactTitle;
-            document.getElementById('newOrderBtn').textContent = t.newOrderBtn;
+        function updateTotal() {
+            const subtotal = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+            const deliveryCost = parseInt(document.getElementById('deliveryZone')?.value || 0);
+            const total = subtotal + deliveryCost;
             
-            let orderText = '';
-            cart.forEach(item => {
-                orderText += `${item.name} x${item.quantity} (฿${item.price * item.quantity})%0A`;
+            if (document.getElementById('subtotal')) {
+                document.getElementById('subtotal').textContent = `฿${subtotal}`;
+                document.getElementById('deliveryCost').textContent = `฿${deliveryCost}`;
+                document.getElementById('total').textContent = `฿${total}`;
+            }
+        }
+
+        function proceedToOrder() {
+            const zone = document.getElementById('deliveryZone').value;
+            if (!zone || (zone === '0' && document.getElementById('deliveryZone').selectedIndex === 0)) {
+                alert('Please select a delivery zone!');
+                return;
+            }
+            goToOrder();
+        }
+
+        function initMap() {
+            map = new google.maps.Map(document.getElementById('map'), {
+                center: selectedLocation,
+                zoom: 15
             });
-            const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
-            orderText += `%0ATotal: ฿${total}`;
 
-            document.getElementById('whatsappLink').href = `https://wa.me/66611483677?text=Hello!%20I%20want%20to%20order:%0A%0A${orderText}`;
-            document.getElementById('lineLink').href = `https://line.me/R/ti/p/%40spirit420`;
-
-            let summary = '<div style="background: rgba(255,255,255,0.03); padding: 20px; border-radius: 10px; margin-bottom: 20px;">';
-            cart.forEach(item => {
-                summary += `<div style="display: flex; justify-content: space-between; padding: 10px 0; border-bottom: 1px solid rgba(127,255,0,0.1);">
-                    <span>${item.name} x${item.quantity}</span>
-                    <span>฿${item.price * item.quantity}</span>
-                </div>`;
+            marker = new google.maps.Marker({
+                position: selectedLocation,
+                map: map,
+                draggable: true
             });
-            summary += `<div style="display: flex; justify-content: space-between; padding: 15px 0; font-size: 1.3em; color: #7FFF00; font-weight: bold;">
-                <span>TOTAL:</span>
-                <span>฿${total}</span>
-            </div></div>`;
 
-            document.getElementById('orderSummary').innerHTML = summary;
+            marker.addListener('dragend', function() {
+                selectedLocation = {
+                    lat: marker.getPosition().lat(),
+                    lng: marker.getPosition().lng()
+                };
+                getAddress(selectedLocation);
+            });
+
+            getAddress(selectedLocation);
+        }
+
+        function getAddress(location) {
+            const geocoder = new google.maps.Geocoder();
+            geocoder.geocode({location: location}, (results, status) => {
+                if (status === 'OK' && results[0]) {
+                    selectedAddress = results[0].formatted_address;
+                    document.getElementById('selectedAddress').textContent = selectedAddress;
+                }
+            });
+        }
+
+        function submitOrder() {
+            const name = document.getElementById('customerName').value;
+            const phone = document.getElementById('customerPhone').value;
+            const time = document.getElementById('deliveryTime').value;
+            const comment = document.getElementById('customerComment').value;
+            
+            if (!name || !phone || !selectedAddress) {
+                alert('Please fill in all required fields and select location on map!');
+                return;
+            }
+            
+            const orderId = Date.now();
+            const subtotal = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+            const delivery = parseInt(document.getElementById('deliveryZone').value || 0);
+            const total = subtotal + delivery;
+            
+            const orderData = {
+                orderId, 
+                items: cart, 
+                name, 
+                phone, 
+                address: selectedAddress,
+                location: selectedLocation,
+                time, 
+                comment,
+                subtotal: `฿${subtotal}`,
+                delivery: `฿${delivery}`,
+                total: `฿${total}`
+            };
+            
+            // Отправляем уведомление в Telegram
+            sendOrderToTelegram(orderData);
+            
+            showSuccessPage(orderData);
+        }
+
+        async function sendOrderToTelegram(orderData) {
+            try {
+                const API_URL = window.location.hostname === 'localhost' 
+                    ? 'http://localhost:3000/api/telegram'
+                    : '/api/telegram';
+                
+                const response = await fetch(API_URL, {
+                    method: 'POST',
+                    headers: {'Content-Type': 'application/json'},
+                    body: JSON.stringify(orderData)
+                });
+                
+                const result = await response.json();
+                
+                if (!response.ok) {
+                    console.error('Failed to send order notification:', result);
+                } else {
+                    console.log('✅ Order sent to admin:', result);
+                }
+            } catch (error) {
+                console.error('Error sending order:', error);
+            }
+        }
+
+        function showSuccessPage(order) {
             document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
-            document.getElementById('orderPage').classList.add('active');
+            document.getElementById('successPage').classList.add('active');
+            
+            document.getElementById('orderNumber').textContent = order.orderId;
+            
+            const summary = document.getElementById('orderSummary');
+            const t = translations[currentLang];
+            summary.innerHTML = `
+                <p><strong>${t.nameLabel}</strong> ${order.name}</p>
+                <p><strong>${t.phoneLabel}</strong> ${order.phone}</p>
+                <p><strong>${t.totalLabel}</strong> ${order.total}</p>
+            `;
+            
+            const totalAmount = parseInt(order.total.replace('฿', ''));
+            generatePromptPayQR('0611483677', totalAmount);
+            
+            document.getElementById('paymentAmount').textContent = `Amount: ${order.total}`;
+            window.scrollTo({top: 0, behavior: 'smooth'});
+        }
+
+        function generatePromptPayQR(phoneNumber, amount) {
+            const qrContainer = document.getElementById('qrCodeContainer');
+            qrContainer.innerHTML = '';
+            
+            const payload = generatePromptPayPayload(phoneNumber, amount);
+            
+            QRCode.toCanvas(payload, {width: 250, margin: 2}, (error, canvas) => {
+                if (error) {
+                    qrContainer.innerHTML = '<p style="color: #000;">QR Code generation failed</p>';
+                } else {
+                    qrContainer.appendChild(canvas);
+                }
+            });
+        }
+
+        function generatePromptPayPayload(phone, amount) {
+            const formattedPhone = phone.replace(/[^0-9]/g, '').substring(1);
+            const formattedAmount = amount.toFixed(2);
+            return `00020101021229370016A000000677010111011300669${formattedPhone}5802TH5303764${formattedAmount}630400ED`;
         }
 
         function newOrder() {
             cart = [];
             updateCartBadge();
+            document.getElementById('customerName').value = '';
+            document.getElementById('customerPhone').value = '';
+            document.getElementById('customerComment').value = '';
             goToCatalog();
         }
 
