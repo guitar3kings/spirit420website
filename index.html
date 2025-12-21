@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>spirit420 - Cannabis Shop Phuket</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%);
+            color: #e0e0e0;
+            min-height: 100vh;
+        }
+
+        .page {
+            display: none;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .page.active {
+            display: block;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        header {
+            text-align: center;
+            padding: 40px 20px;
+            background: rgba(127, 255, 0, 0.05);
+            border-radius: 20px;
+            margin-bottom: 40px;
+            border: 2px solid rgba(127, 255, 0, 0.2);
+        }
+
+        h1 {
+            font-size: 3em;
+            color: #7FFF00;
+            margin-bottom: 10px;
+            text-shadow: 0 0 20px rgba(127, 255, 0, 0.3);
+        }
+
+        .subtitle {
+            font-size: 1.2em;
+            color: #a0a0a0;
+            margin-bottom: 20px;
+        }
+
+        .disclaimer {
+            background: rgba(255, 100, 100, 0.1);
+            border: 2px solid rgba(255, 100, 100, 0.3);
+            border-radius: 10px;
+            padding: 20px;
+            margin: 20px 0;
+            font-size: 0.9em;
+        }
+
+        .products {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+
+        .product-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border: 2px solid rgba(127, 255, 0, 0.2);
+            border-radius: 15px;
+            padding: 20px;
+            transition: all 0.3s;
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+            border-color: #7FFF00;
+            box-shadow: 0 10px 30px rgba(127, 255, 0, 0.2);
+        }
+
+        .product-name {
+            font-size: 1.4em;
+            color: #7FFF00;
+            margin-bottom: 10px;
+        }
+
+        .product-type {
+            font-size: 1.1em;
+            margin-bottom: 8px;
+            opacity: 0.9;
+        }
+
+        .product-thc {
+            color: #FFD700;
+            font-weight: bold;
+            margin-bottom: 8px;
+        }
+
+        .product-price {
+            font-size: 1.3em;
+            color: #7FFF00;
+            margin: 15px 0;
+            font-weight: bold;
+        }
+
+        .contact-section {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border: 2px solid rgba(127, 255, 0, 0.3);
+            border-radius: 15px;
+            padding: 40px;
+            margin-top: 60px;
+            text-align: center;
+        }
+
+        .contact-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            margin-top: 30px;
+            flex-wrap: wrap;
+        }
+
+        .contact-btn {
+            padding: 20px 40px;
+            border-radius: 15px;
+            border: 2px solid rgba(127, 255, 0, 0.3);
+            background: rgba(127, 255, 0, 0.1);
+            color: #7FFF00;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.2em;
+            transition: all 0.3s;
+        }
+
+        .contact-btn:hover {
+            background: rgba(127, 255, 0, 0.3);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(127, 255, 0, 0.3);
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2em;
+            }
+            
+            .products {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-buttons {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="page active">
+        <div class="container">
+            <header>
+                <h1>🌿 spirit420</h1>
+                <p class="subtitle">Licensed cannabis shop, Phuket</p>
+                
+                <div class="disclaimer">
+                    ⚠️ This website is for informational purposes only. Access limited to persons 20+ years of age. By continuing, you confirm compliance with Thai law.
+                </div>
+            </header>
+
+            <div class="products" id="products"></div>
+
+            <div class="contact-section">
+                <h2 style="color: #7FFF00; font-size: 2.5em; margin-bottom: 20px;">📞 Contact Us for Orders</h2>
+                <p style="font-size: 1.3em; margin-bottom: 30px;">
+                    To place an order, please contact us directly via WhatsApp or LINE
+                </p>
+                <div class="contact-buttons">
+                    <a href="https://wa.me/66611483677" class="contact-btn" target="_blank">
+                        📲 WhatsApp<br>
+                        <span style="font-size: 0.8em; opacity: 0.8;">+66 61 148 3677</span>
+                    </a>
+                    <a href="https://line.me/R/ti/p/%40spirit420" class="contact-btn" target="_blank">
+                        💬 LINE<br>
+                        <span style="font-size: 0.8em; opacity: 0.8;">@spirit420</span>
+                    </a>
+                </div>
+                <p style="margin-top: 30px; font-size: 1.1em; opacity: 0.8;">
+                    📍 32/1 Chao Fah Tawan Tok Rd, Phuket<br>
+                    🕐 Mon-Sun: 11:00 AM - 2:00 AM
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const products = [
+            {name: 'Miami', type: 'sativa', thc: 27, price: 250},
+            {name: 'Dosi Dos', type: 'indica', thc: 27, price: 250},
+            {name: 'Frozen Joke', type: 'indica', thc: 27, price: 250},
+            {name: 'Rainbow Inferno', type: 'sativa', thc: 27, price: 300},
+            {name: 'LA', type: 'sativa', thc: 24, price: 150},
+            {name: 'Super Boof', type: 'hybrid', thc: 27, price: 300},
+            {name: 'Tropicana Chery', type: 'indica', thc: 27, price: 300},
+            {name: 'Lemon Haze', type: 'sativa', thc: 25, price: 150},
+            {name: 'Orange Haze', type: 'sativa', thc: 27, price: 250},
+            {name: 'Diamond Runt', type: 'indica', thc: 27, price: 250},
+            {name: 'Frozen Joke Joint', type: 'indica', thc: 27, price: 200, desc: '1 pcs'},
+            {name: 'Double Kush Cake Joint', type: 'hybrid', thc: 26, price: 200, desc: '1 pcs'},
+            {name: 'Double Kush Cake Joint', type: 'sativa', thc: 26, price: 100, desc: '1 pcs', special: '🎁 buy 3 get 4'}
+        ];
+
+        const typeEmojis = {
+            sativa: '☀️',
+            indica: '🌙',
+            hybrid: '🌓'
+        };
+
+        function renderProducts() {
+            const container = document.getElementById('products');
+            container.innerHTML = '';
+            
+            products.forEach(product => {
+                const card = document.createElement('div');
+                card.className = 'product-card';
+                card.innerHTML = `
+                    <div class="product-name">${product.name}</div>
+                    <div class="product-type">${typeEmojis[product.type]} ${product.type.charAt(0).toUpperCase() + product.type.slice(1)}</div>
+                    <div class="product-thc">💎 THC: ${product.thc}%</div>
+                    ${product.desc ? `<div style="opacity: 0.8; margin: 8px 0;">${product.desc}</div>` : ''}
+                    ${product.special ? `<div style="background: rgba(255,215,0,0.1); border: 1px solid rgba(255,215,0,0.3); border-radius: 8px; padding: 8px; margin: 10px 0; color: #FFD700;">${product.special}</div>` : ''}
+                    <div class="product-price">฿${product.price}</div>
+                `;
+                container.appendChild(card);
+            });
+        }
+
+        renderProducts();
+    </script>
+</body>
+</html>
