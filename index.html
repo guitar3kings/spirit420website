@@ -5,12 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>spirit420 - Cannabis Shop Phuket</title>
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%);
@@ -18,20 +14,9 @@
             min-height: 100vh;
         }
 
-        .page {
-            display: none;
-            min-height: 100vh;
-            padding: 20px;
-        }
-
-        .page.active {
-            display: block;
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-        }
+        .page { display: none; min-height: 100vh; padding: 20px; }
+        .page.active { display: block; }
+        .container { max-width: 1200px; margin: 0 auto; }
 
         header {
             text-align: center;
@@ -42,19 +27,9 @@
             border: 2px solid rgba(127, 255, 0, 0.2);
         }
 
-        h1 {
-            font-size: 3em;
-            color: #7FFF00;
-            margin-bottom: 10px;
-            text-shadow: 0 0 20px rgba(127, 255, 0, 0.3);
-        }
-
-        .subtitle {
-            font-size: 1.2em;
-            color: #a0a0a0;
-            margin-bottom: 20px;
-        }
-
+        h1 { font-size: 3em; color: #7FFF00; margin-bottom: 10px; text-shadow: 0 0 20px rgba(127, 255, 0, 0.3); }
+        .subtitle { font-size: 1.2em; color: #a0a0a0; margin-bottom: 20px; }
+        
         .disclaimer {
             background: rgba(255, 100, 100, 0.1);
             border: 2px solid rgba(255, 100, 100, 0.3);
@@ -62,6 +37,53 @@
             padding: 20px;
             margin: 20px 0;
             font-size: 0.9em;
+        }
+
+        .lang-selector {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+
+        .lang-btn {
+            background: rgba(127, 255, 0, 0.1);
+            border: 2px solid rgba(127, 255, 0, 0.3);
+            color: #7FFF00;
+            padding: 10px 20px;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .lang-btn.active {
+            background: rgba(127, 255, 0, 0.3);
+            border-color: #7FFF00;
+        }
+
+        .filters {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin-bottom: 30px;
+        }
+
+        .filter-btn {
+            background: rgba(255, 255, 255, 0.05);
+            border: 2px solid rgba(127, 255, 0, 0.3);
+            color: #e0e0e0;
+            padding: 12px 24px;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-size: 1em;
+        }
+
+        .filter-btn:hover, .filter-btn.active {
+            background: rgba(127, 255, 0, 0.2);
+            border-color: #7FFF00;
+            transform: translateY(-2px);
         }
 
         .products {
@@ -86,162 +108,498 @@
             box-shadow: 0 10px 30px rgba(127, 255, 0, 0.2);
         }
 
-        .product-name {
-            font-size: 1.4em;
-            color: #7FFF00;
-            margin-bottom: 10px;
-        }
-
-        .product-type {
-            font-size: 1.1em;
-            margin-bottom: 8px;
-            opacity: 0.9;
-        }
-
-        .product-thc {
+        .product-name { font-size: 1.4em; color: #7FFF00; margin-bottom: 10px; }
+        .product-type { font-size: 1.1em; margin-bottom: 8px; opacity: 0.9; }
+        .product-thc { color: #FFD700; font-weight: bold; margin-bottom: 8px; }
+        .product-price { font-size: 1.3em; color: #7FFF00; margin: 15px 0; font-weight: bold; }
+        
+        .product-special {
+            background: rgba(255, 215, 0, 0.1);
+            border: 1px solid rgba(255, 215, 0, 0.3);
+            border-radius: 8px;
+            padding: 8px;
+            margin: 10px 0;
+            font-size: 0.9em;
             color: #FFD700;
-            font-weight: bold;
-            margin-bottom: 8px;
         }
 
-        .product-price {
-            font-size: 1.3em;
+        .add-btn {
+            width: 100%;
+            background: linear-gradient(135deg, #7FFF00 0%, #32CD32 100%);
+            border: none;
+            color: #000;
+            padding: 12px;
+            border-radius: 10px;
+            font-size: 1em;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .add-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 5px 20px rgba(127, 255, 0, 0.4);
+        }
+
+        .cart-page-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+        }
+
+        .back-btn {
+            background: rgba(255, 255, 255, 0.1);
+            border: 2px solid rgba(127, 255, 0, 0.3);
             color: #7FFF00;
-            margin: 15px 0;
-            font-weight: bold;
+            padding: 10px 20px;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 1em;
+            transition: all 0.3s;
         }
 
-        .contact-section {
+        .back-btn:hover { background: rgba(127, 255, 0, 0.2); }
+
+        .cart-content {
             background: rgba(255, 255, 255, 0.05);
             backdrop-filter: blur(10px);
             border: 2px solid rgba(127, 255, 0, 0.3);
             border-radius: 15px;
-            padding: 40px;
-            margin-top: 60px;
-            text-align: center;
+            padding: 30px;
         }
+
+        .cart-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px;
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 10px;
+            margin-bottom: 10px;
+        }
+
+        .cart-controls {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+
+        .qty-btn {
+            background: rgba(127, 255, 0, 0.2);
+            border: 1px solid rgba(127, 255, 0, 0.4);
+            color: #7FFF00;
+            width: 35px;
+            height: 35px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1.3em;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .remove-btn {
+            background: rgba(255, 100, 100, 0.2);
+            border: 1px solid rgba(255, 100, 100, 0.4);
+            color: #ff6464;
+            padding: 8px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .total-section {
+            border-top: 2px solid rgba(127, 255, 0, 0.3);
+            padding-top: 20px;
+            margin-top: 20px;
+        }
+
+        .total-line {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px 0;
+            font-size: 1.1em;
+        }
+
+        .total-final {
+            font-size: 1.5em;
+            color: #7FFF00;
+            font-weight: bold;
+        }
+
+        .submit-btn {
+            width: 100%;
+            background: linear-gradient(135deg, #7FFF00 0%, #32CD32 100%);
+            border: none;
+            color: #000;
+            padding: 15px;
+            border-radius: 10px;
+            font-size: 1.2em;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .submit-btn:hover {
+            transform: scale(1.02);
+            box-shadow: 0 10px 30px rgba(127, 255, 0, 0.4);
+        }
+
+        .cart-badge {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: linear-gradient(135deg, #7FFF00 0%, #32CD32 100%);
+            color: #000;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5em;
+            font-weight: bold;
+            cursor: pointer;
+            box-shadow: 0 5px 20px rgba(127, 255, 0, 0.4);
+            transition: all 0.3s;
+            z-index: 1000;
+        }
+
+        .cart-badge:hover { transform: scale(1.1); }
 
         .contact-buttons {
             display: flex;
-            gap: 20px;
-            justify-content: center;
-            margin-top: 30px;
-            flex-wrap: wrap;
+            gap: 15px;
+            margin: 20px 0;
         }
 
         .contact-btn {
-            padding: 20px 40px;
-            border-radius: 15px;
+            flex: 1;
+            padding: 15px;
+            border-radius: 10px;
             border: 2px solid rgba(127, 255, 0, 0.3);
             background: rgba(127, 255, 0, 0.1);
             color: #7FFF00;
             text-decoration: none;
+            text-align: center;
             font-weight: bold;
-            font-size: 1.2em;
             transition: all 0.3s;
         }
 
         .contact-btn:hover {
-            background: rgba(127, 255, 0, 0.3);
-            transform: translateY(-3px);
-            box-shadow: 0 10px 30px rgba(127, 255, 0, 0.3);
+            background: rgba(127, 255, 0, 0.2);
+            transform: translateY(-2px);
+        }
+
+        .empty-cart {
+            text-align: center;
+            padding: 60px 20px;
+            color: #a0a0a0;
+        }
+
+        .empty-cart-icon {
+            font-size: 5em;
+            margin-bottom: 20px;
+            opacity: 0.3;
         }
 
         @media (max-width: 768px) {
-            h1 {
-                font-size: 2em;
-            }
-            
-            .products {
-                grid-template-columns: 1fr;
-            }
-
-            .contact-buttons {
-                flex-direction: column;
-            }
+            h1 { font-size: 2em; }
+            .products { grid-template-columns: 1fr; }
+            .contact-buttons { flex-direction: column; }
+            .cart-page-header { flex-direction: column; gap: 15px; }
         }
     </style>
 </head>
 <body>
-    <div class="page active">
+    <!-- Catalog Page -->
+    <div class="page active" id="catalogPage">
         <div class="container">
             <header>
                 <h1>🌿 spirit420</h1>
-                <p class="subtitle">Licensed cannabis shop, Phuket</p>
+                <p class="subtitle" id="subtitle">Licensed cannabis shop, Phuket</p>
                 
-                <div class="disclaimer">
-                    ⚠️ This website is for informational purposes only. Access limited to persons 20+ years of age. By continuing, you confirm compliance with Thai law.
+                <div class="lang-selector">
+                    <button class="lang-btn active" onclick="setLang('en')">🇬🇧 EN</button>
+                    <button class="lang-btn" onclick="setLang('ru')">🇷🇺 RU</button>
+                    <button class="lang-btn" onclick="setLang('th')">🇹🇭 TH</button>
                 </div>
+
+                <div class="disclaimer" id="disclaimer"></div>
             </header>
 
+            <div class="filters" id="filters"></div>
             <div class="products" id="products"></div>
 
-            <div class="contact-section">
-                <h2 style="color: #7FFF00; font-size: 2.5em; margin-bottom: 20px;">📞 Contact Us for Orders</h2>
-                <p style="font-size: 1.3em; margin-bottom: 30px;">
-                    To place an order, please contact us directly via WhatsApp or LINE
-                </p>
+            <div class="cart-badge" onclick="goToCart()" id="cartBadge">0</div>
+        </div>
+    </div>
+
+    <!-- Cart Page -->
+    <div class="page" id="cartPage">
+        <div class="container">
+            <div class="cart-page-header">
+                <button class="back-btn" onclick="goToCatalog()" id="backBtn">← Back to Catalog</button>
+                <h2 style="color: #7FFF00;" id="cartTitle">🛒 Your Cart</h2>
+                <div></div>
+            </div>
+            <div id="cartContent"></div>
+        </div>
+    </div>
+
+    <!-- Order Confirmation -->
+    <div class="page" id="orderPage">
+        <div class="container">
+            <div class="cart-content">
+                <h2 style="color: #7FFF00; text-align: center; margin-bottom: 30px;" id="orderTitle">📦 Order Summary</h2>
+                <div id="orderSummary"></div>
+                <h3 style="color: #7FFF00; text-align: center; margin: 40px 0 20px;" id="contactTitle">Contact us to complete your order:</h3>
                 <div class="contact-buttons">
-                    <a href="https://wa.me/66611483677" class="contact-btn" target="_blank">
-                        📲 WhatsApp<br>
-                        <span style="font-size: 0.8em; opacity: 0.8;">+66 61 148 3677</span>
-                    </a>
-                    <a href="https://line.me/R/ti/p/%40spirit420" class="contact-btn" target="_blank">
-                        💬 LINE<br>
-                        <span style="font-size: 0.8em; opacity: 0.8;">@spirit420</span>
-                    </a>
+                    <a href="#" id="whatsappLink" class="contact-btn" target="_blank">📲 WhatsApp</a>
+                    <a href="#" id="lineLink" class="contact-btn" target="_blank">💬 LINE</a>
                 </div>
-                <p style="margin-top: 30px; font-size: 1.1em; opacity: 0.8;">
-                    📍 32/1 Chao Fah Tawan Tok Rd, Phuket<br>
-                    🕐 Mon-Sun: 11:00 AM - 2:00 AM
-                </p>
+                <button class="submit-btn" onclick="newOrder()" id="newOrderBtn" style="margin-top: 20px;">🔄 New Order</button>
             </div>
         </div>
     </div>
 
     <script>
         const products = [
-            {name: 'Miami', type: 'sativa', thc: 27, price: 250},
-            {name: 'Dosi Dos', type: 'indica', thc: 27, price: 250},
-            {name: 'Frozen Joke', type: 'indica', thc: 27, price: 250},
-            {name: 'Rainbow Inferno', type: 'sativa', thc: 27, price: 300},
-            {name: 'LA', type: 'sativa', thc: 24, price: 150},
-            {name: 'Super Boof', type: 'hybrid', thc: 27, price: 300},
-            {name: 'Tropicana Chery', type: 'indica', thc: 27, price: 300},
-            {name: 'Lemon Haze', type: 'sativa', thc: 25, price: 150},
-            {name: 'Orange Haze', type: 'sativa', thc: 27, price: 250},
-            {name: 'Diamond Runt', type: 'indica', thc: 27, price: 250},
-            {name: 'Frozen Joke Joint', type: 'indica', thc: 27, price: 200, desc: '1 pcs'},
-            {name: 'Double Kush Cake Joint', type: 'hybrid', thc: 26, price: 200, desc: '1 pcs'},
-            {name: 'Double Kush Cake Joint', type: 'sativa', thc: 26, price: 100, desc: '1 pcs', special: '🎁 buy 3 get 4'}
+            {name: 'Miami', type: 'sativa', thc: 27, price: 250, category: 'sorts'},
+            {name: 'Dosi Dos', type: 'indica', thc: 27, price: 250, category: 'sorts'},
+            {name: 'Frozen Joke', type: 'indica', thc: 27, price: 250, category: 'sorts'},
+            {name: 'Rainbow Inferno', type: 'sativa', thc: 27, price: 300, category: 'sorts'},
+            {name: 'LA', type: 'sativa', thc: 24, price: 150, category: 'sorts'},
+            {name: 'Super Boof', type: 'hybrid', thc: 27, price: 300, category: 'sorts'},
+            {name: 'Tropicana Chery', type: 'indica', thc: 27, price: 300, category: 'sorts'},
+            {name: 'Lemon Haze', type: 'sativa', thc: 25, price: 150, category: 'sorts'},
+            {name: 'Orange Haze', type: 'sativa', thc: 27, price: 250, category: 'sorts'},
+            {name: 'Diamond Runt', type: 'indica', thc: 27, price: 250, category: 'sorts'},
+            {name: 'Frozen Joke Joint', type: 'indica', thc: 27, price: 200, category: 'joints', desc: '1 pcs'},
+            {name: 'Double Kush Cake Joint', type: 'hybrid', thc: 26, price: 200, category: 'joints', desc: '1 pcs'},
+            {name: 'Double Kush Cake Joint', type: 'sativa', thc: 26, price: 100, category: 'joints', desc: '1 pcs', special: 'buy 3 get 4'}
         ];
 
-        const typeEmojis = {
-            sativa: '☀️',
-            indica: '🌙',
-            hybrid: '🌓'
+        const translations = {
+            en: {
+                subtitle: 'Licensed cannabis shop, Phuket',
+                disclaimer: '⚠️ This website is for informational purposes only. Access limited to persons 20+ years of age. By continuing, you confirm compliance with Thai law.',
+                allProducts: 'All', sativa: '☀️ Sativa', indica: '🌙 Indica', hybrid: '🌓 Hybrid', prerolled: '🚬 Joints',
+                cartTitle: '🛒 Your Cart', subtotal: 'Subtotal:', total: 'TOTAL:', proceedBtn: 'Checkout →',
+                addToCart: 'Add to Cart', emptyCart: 'Your cart is empty', startShopping: 'Start Shopping',
+                backBtn: '← Back to Catalog', orderTitle: '📦 Order Summary', contactTitle: 'Contact us to complete your order:',
+                newOrderBtn: '🔄 New Order'
+            },
+            ru: {
+                subtitle: 'Лицензированный магазин каннабиса, Пхукет',
+                disclaimer: '⚠️ Этот сайт носит исключительно информационный характер. Доступ только для лиц 20+. Продолжая, вы подтверждаете соблюдение законов Таиланда.',
+                allProducts: 'Все', sativa: '☀️ Sativa', indica: '🌙 Indica', hybrid: '🌓 Hybrid', prerolled: '🚬 Преролы',
+                cartTitle: '🛒 Ваша корзина', subtotal: 'Сумма:', total: 'ИТОГО:', proceedBtn: 'Оформить →',
+                addToCart: 'В корзину', emptyCart: 'Корзина пуста', startShopping: 'Начать покупки',
+                backBtn: '← Назад', orderTitle: '📦 Ваш заказ', contactTitle: 'Свяжитесь с нами для завершения заказа:',
+                newOrderBtn: '🔄 Новый заказ'
+            },
+            th: {
+                subtitle: 'ร้านกัญชาที่ได้รับใบอนุญาต ภูเก็ต',
+                disclaimer: '⚠️ เว็บไซต์นี้จัดทำขึ้นเพื่อให้ข้อมูลเท่านั้น สำหรับผู้ที่มีอายุ 20 ปีขึ้นไปเท่านั้น',
+                allProducts: 'ทั้งหมด', sativa: '☀️ Sativa', indica: '🌙 Indica', hybrid: '🌓 Hybrid', prerolled: '🚬 พรีโรล',
+                cartTitle: '🛒 ตะกร้า', subtotal: 'รวม:', total: 'ทั้งหมด:', proceedBtn: 'ชำระเงิน →',
+                addToCart: 'เพิ่ม', emptyCart: 'ตะกร้าว่าง', startShopping: 'เริ่มช็อป',
+                backBtn: '← กลับ', orderTitle: '📦 คำสั่งซื้อ', contactTitle: 'ติดต่อเราเพื่อทำรายการให้เสร็จ:',
+                newOrderBtn: '🔄 สั่งใหม่'
+            }
         };
 
+        let cart = [];
+        let currentFilter = 'all';
+        let currentLang = 'en';
+        const typeEmojis = {sativa: '☀️', indica: '🌙', hybrid: '🌓'};
+
+        function setLang(lang) {
+            currentLang = lang;
+            document.querySelectorAll('.lang-btn').forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+            updateTexts();
+        }
+
+        function updateTexts() {
+            const t = translations[currentLang];
+            document.getElementById('subtitle').textContent = t.subtitle;
+            document.getElementById('disclaimer').textContent = t.disclaimer;
+            renderFilters();
+            renderProducts();
+        }
+
+        function renderFilters() {
+            const t = translations[currentLang];
+            const container = document.getElementById('filters');
+            container.innerHTML = `
+                <button class="filter-btn ${currentFilter === 'all' ? 'active' : ''}" onclick="filterProducts('all')">${t.allProducts}</button>
+                <button class="filter-btn ${currentFilter === 'sativa' ? 'active' : ''}" onclick="filterProducts('sativa')">${t.sativa}</button>
+                <button class="filter-btn ${currentFilter === 'indica' ? 'active' : ''}" onclick="filterProducts('indica')">${t.indica}</button>
+                <button class="filter-btn ${currentFilter === 'hybrid' ? 'active' : ''}" onclick="filterProducts('hybrid')">${t.hybrid}</button>
+                <button class="filter-btn ${currentFilter === 'joints' ? 'active' : ''}" onclick="filterProducts('joints')">${t.prerolled}</button>
+            `;
+        }
+
         function renderProducts() {
+            const t = translations[currentLang];
             const container = document.getElementById('products');
             container.innerHTML = '';
             
-            products.forEach(product => {
-                const card = document.createElement('div');
-                card.className = 'product-card';
-                card.innerHTML = `
-                    <div class="product-name">${product.name}</div>
-                    <div class="product-type">${typeEmojis[product.type]} ${product.type.charAt(0).toUpperCase() + product.type.slice(1)}</div>
-                    <div class="product-thc">💎 THC: ${product.thc}%</div>
-                    ${product.desc ? `<div style="opacity: 0.8; margin: 8px 0;">${product.desc}</div>` : ''}
-                    ${product.special ? `<div style="background: rgba(255,215,0,0.1); border: 1px solid rgba(255,215,0,0.3); border-radius: 8px; padding: 8px; margin: 10px 0; color: #FFD700;">${product.special}</div>` : ''}
-                    <div class="product-price">฿${product.price}</div>
-                `;
-                container.appendChild(card);
-            });
+            products
+                .filter(p => currentFilter === 'all' || p.type === currentFilter || (currentFilter === 'joints' && p.category === 'joints'))
+                .forEach((product, index) => {
+                    const card = document.createElement('div');
+                    card.className = 'product-card';
+                    card.innerHTML = `
+                        <div class="product-name">${product.name}</div>
+                        <div class="product-type">${typeEmojis[product.type]} ${product.type.charAt(0).toUpperCase() + product.type.slice(1)}</div>
+                        <div class="product-thc">💎 THC: ${product.thc}%</div>
+                        ${product.desc ? `<div style="opacity: 0.8;">${product.desc}</div>` : ''}
+                        ${product.special ? `<div class="product-special">🎁 ${product.special}</div>` : ''}
+                        <div class="product-price">฿${product.price}</div>
+                        <button class="add-btn" onclick="addToCart(${index})">${t.addToCart}</button>
+                    `;
+                    container.appendChild(card);
+                });
         }
 
-        renderProducts();
+        function filterProducts(filter) {
+            currentFilter = filter;
+            renderFilters();
+            renderProducts();
+        }
+
+        function addToCart(index) {
+            const product = products[index];
+            const existing = cart.find(item => item.name === product.name);
+            if (existing) { existing.quantity++; } 
+            else { cart.push({...product, quantity: 1}); }
+            updateCartBadge();
+        }
+
+        function updateCartBadge() {
+            document.getElementById('cartBadge').textContent = cart.reduce((sum, item) => sum + item.quantity, 0);
+        }
+
+        function goToCart() {
+            document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+            document.getElementById('cartPage').classList.add('active');
+            renderCart();
+        }
+
+        function goToCatalog() {
+            document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+            document.getElementById('catalogPage').classList.add('active');
+        }
+
+        function renderCart() {
+            const t = translations[currentLang];
+            document.getElementById('cartTitle').textContent = t.cartTitle;
+            document.getElementById('backBtn').textContent = t.backBtn;
+            const container = document.getElementById('cartContent');
+            
+            if (cart.length === 0) {
+                container.innerHTML = `
+                    <div class="empty-cart">
+                        <div class="empty-cart-icon">🛒</div>
+                        <h2>${t.emptyCart}</h2>
+                        <button class="submit-btn" style="max-width: 300px; margin: 20px auto;" onclick="goToCatalog()">${t.startShopping}</button>
+                    </div>
+                `;
+                return;
+            }
+
+            let html = '<div class="cart-content">';
+            cart.forEach((item, index) => {
+                html += `
+                    <div class="cart-item">
+                        <div>
+                            <div style="font-weight: bold;">${item.name}</div>
+                            <div style="opacity: 0.7;">฿${item.price} each</div>
+                        </div>
+                        <div class="cart-controls">
+                            <button class="qty-btn" onclick="changeQty(${index}, -1)">-</button>
+                            <span style="margin: 0 15px; font-size: 1.2em;">${item.quantity}</span>
+                            <button class="qty-btn" onclick="changeQty(${index}, 1)">+</button>
+                            <button class="remove-btn" onclick="removeItem(${index})">×</button>
+                        </div>
+                    </div>
+                `;
+            });
+
+            const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+            html += `
+                <div class="total-section">
+                    <div class="total-line">
+                        <span>${t.subtotal}</span>
+                        <span>฿${total}</span>
+                    </div>
+                    <div class="total-line total-final">
+                        <span>${t.total}</span>
+                        <span>฿${total}</span>
+                    </div>
+                </div>
+                <button class="submit-btn" onclick="checkout()">${t.proceedBtn}</button>
+            </div>`;
+
+            container.innerHTML = html;
+        }
+
+        function changeQty(index, change) {
+            cart[index].quantity += change;
+            if (cart[index].quantity <= 0) { cart.splice(index, 1); }
+            updateCartBadge();
+            renderCart();
+        }
+
+        function removeItem(index) {
+            cart.splice(index, 1);
+            updateCartBadge();
+            renderCart();
+        }
+
+        function checkout() {
+            const t = translations[currentLang];
+            document.getElementById('orderTitle').textContent = t.orderTitle;
+            document.getElementById('contactTitle').textContent = t.contactTitle;
+            document.getElementById('newOrderBtn').textContent = t.newOrderBtn;
+            
+            let orderText = '';
+            cart.forEach(item => {
+                orderText += `${item.name} x${item.quantity} (฿${item.price * item.quantity})%0A`;
+            });
+            const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+            orderText += `%0ATotal: ฿${total}`;
+
+            document.getElementById('whatsappLink').href = `https://wa.me/66611483677?text=Hello!%20I%20want%20to%20order:%0A%0A${orderText}`;
+            document.getElementById('lineLink').href = `https://line.me/R/ti/p/%40spirit420`;
+
+            let summary = '<div style="background: rgba(255,255,255,0.03); padding: 20px; border-radius: 10px; margin-bottom: 20px;">';
+            cart.forEach(item => {
+                summary += `<div style="display: flex; justify-content: space-between; padding: 10px 0; border-bottom: 1px solid rgba(127,255,0,0.1);">
+                    <span>${item.name} x${item.quantity}</span>
+                    <span>฿${item.price * item.quantity}</span>
+                </div>`;
+            });
+            summary += `<div style="display: flex; justify-content: space-between; padding: 15px 0; font-size: 1.3em; color: #7FFF00; font-weight: bold;">
+                <span>TOTAL:</span>
+                <span>฿${total}</span>
+            </div></div>`;
+
+            document.getElementById('orderSummary').innerHTML = summary;
+            document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+            document.getElementById('orderPage').classList.add('active');
+        }
+
+        function newOrder() {
+            cart = [];
+            updateCartBadge();
+            goToCatalog();
+        }
+
+        updateTexts();
     </script>
 </body>
 </html>
