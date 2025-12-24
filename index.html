@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
     
     <style>
+        /* Все стили остаются те же самые */
         * {
             margin: 0;
             padding: 0;
@@ -190,286 +191,63 @@
             box-shadow: 0 5px 20px rgba(127, 255, 0, 0.4);
         }
 
-        .cart-page-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 30px;
-        }
-
-        .back-btn {
-            background: rgba(255, 255, 255, 0.1);
-            border: 2px solid rgba(127, 255, 0, 0.3);
-            color: #7FFF00;
-            padding: 10px 20px;
-            border-radius: 10px;
-            cursor: pointer;
-            font-size: 1em;
-            transition: all 0.3s;
-        }
-
-        .back-btn:hover {
-            background: rgba(127, 255, 0, 0.2);
-        }
-
-        .cart-content {
-            background: rgba(255, 255, 255, 0.05);
-            backdrop-filter: blur(10px);
-            border: 2px solid rgba(127, 255, 0, 0.3);
-            border-radius: 15px;
-            padding: 30px;
-        }
-
-        .cart-item {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 15px;
-            background: rgba(255, 255, 255, 0.03);
-            border-radius: 10px;
-            margin-bottom: 10px;
-        }
-
-        .cart-controls {
-            display: flex;
-            gap: 10px;
-            align-items: center;
-        }
-
-        .qty-btn {
-            background: rgba(127, 255, 0, 0.2);
-            border: 1px solid rgba(127, 255, 0, 0.4);
-            color: #7FFF00;
-            width: 35px;
-            height: 35px;
-            border-radius: 5px;
-            cursor: pointer;
-            font-size: 1.3em;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .remove-btn {
-            background: rgba(255, 100, 100, 0.2);
-            border: 1px solid rgba(255, 100, 100, 0.4);
-            color: #ff6464;
-            padding: 8px 15px;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-
-        .delivery-zone {
-            margin: 20px 0;
-            padding: 20px;
-            background: rgba(255, 255, 255, 0.03);
-            border-radius: 10px;
-        }
-
-        .zone-select {
-            width: 100%;
-            padding: 12px;
-            background: rgba(255, 255, 255, 0.1);
-            border: 2px solid rgba(127, 255, 0, 0.3);
-            border-radius: 10px;
-            color: #e0e0e0;
-            font-size: 1em;
-            margin-top: 10px;
-        }
-
-        .total-section {
-            border-top: 2px solid rgba(127, 255, 0, 0.3);
-            padding-top: 20px;
-            margin-top: 20px;
-        }
-
-        .total-line {
-            display: flex;
-            justify-content: space-between;
-            padding: 10px 0;
-            font-size: 1.1em;
-        }
-
-        .total-final {
-            font-size: 1.5em;
-            color: #7FFF00;
-            font-weight: bold;
-        }
-
-        .form-group {
-            margin-bottom: 20px;
-        }
-
-        .form-group label {
-            display: block;
-            margin-bottom: 8px;
-            color: #7FFF00;
-            font-weight: bold;
-        }
-
-        .form-group input, .form-group textarea, .form-group select {
-            width: 100%;
-            padding: 12px;
-            background: rgba(255, 255, 255, 0.1);
-            border: 2px solid rgba(127, 255, 0, 0.3);
-            border-radius: 10px;
-            color: #e0e0e0;
-            font-size: 1em;
-        }
-
-        .form-group textarea {
-            resize: vertical;
-            min-height: 100px;
-        }
-
-        .map-container {
-            width: 100%;
-            height: 400px;
-            border-radius: 10px;
-            overflow: hidden;
-            margin-top: 10px;
-            border: 2px solid rgba(127, 255, 0, 0.3);
-        }
-
-        .selected-address {
-            margin-top: 10px;
-            padding: 10px;
-            background: rgba(127, 255, 0, 0.1);
-            border-radius: 8px;
-            color: #7FFF00;
-        }
-
-        .submit-btn {
-            width: 100%;
-            background: linear-gradient(135deg, #7FFF00 0%, #32CD32 100%);
-            border: none;
-            color: #000;
-            padding: 15px;
-            border-radius: 10px;
-            font-size: 1.2em;
-            font-weight: bold;
-            cursor: pointer;
-            transition: all 0.3s;
-        }
-
-        .submit-btn:hover {
-            transform: scale(1.02);
-            box-shadow: 0 10px 30px rgba(127, 255, 0, 0.4);
-        }
-
-        .cart-badge {
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
-            background: linear-gradient(135deg, #7FFF00 0%, #32CD32 100%);
-            color: #000;
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.5em;
-            font-weight: bold;
-            cursor: pointer;
-            box-shadow: 0 5px 20px rgba(127, 255, 0, 0.4);
-            transition: all 0.3s;
-            z-index: 1000;
-        }
-
-        .cart-badge:hover {
-            transform: scale(1.1);
-        }
-
-        .qr-code {
-            text-align: center;
-            padding: 30px;
-            background: white;
-            border-radius: 15px;
-            margin: 30px auto;
-            max-width: 400px;
-        }
-
-        .order-summary {
-            background: rgba(255, 255, 255, 0.03);
-            padding: 20px;
-            border-radius: 10px;
-            margin: 20px 0;
-        }
-
-        .success-icon {
-            font-size: 5em;
-            text-align: center;
-            margin: 20px 0;
-        }
-
-        .contact-buttons {
-            display: flex;
-            gap: 15px;
-            margin: 20px 0;
-        }
-
-        .contact-btn {
-            flex: 1;
-            padding: 15px;
-            border-radius: 10px;
-            border: 2px solid rgba(127, 255, 0, 0.3);
-            background: rgba(127, 255, 0, 0.1);
-            color: #7FFF00;
-            text-decoration: none;
-            text-align: center;
-            font-weight: bold;
-            transition: all 0.3s;
-        }
-
-        .contact-btn:hover {
-            background: rgba(127, 255, 0, 0.2);
-            transform: translateY(-2px);
-        }
-
-        .empty-cart {
+        .loading {
             text-align: center;
             padding: 60px 20px;
-            color: #a0a0a0;
+            color: #7FFF00;
+            font-size: 1.5em;
         }
 
-        .empty-cart-icon {
-            font-size: 5em;
-            margin-bottom: 20px;
-            opacity: 0.3;
+        .error-message {
+            text-align: center;
+            padding: 40px 20px;
+            color: #ff6464;
+            background: rgba(255, 100, 100, 0.1);
+            border: 2px solid rgba(255, 100, 100, 0.3);
+            border-radius: 15px;
+            margin: 20px;
         }
 
-        /* Leaflet map dark theme */
-        .leaflet-container {
-            background: #1a1a1a;
-        }
-
-        .leaflet-popup-content-wrapper {
-            background: rgba(26, 26, 26, 0.95);
-            color: #e0e0e0;
-        }
-
-        .leaflet-popup-tip {
-            background: rgba(26, 26, 26, 0.95);
-        }
-
+        /* Остальные стили для cart, order form, success page - все те же */
+        .cart-page-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 30px; }
+        .back-btn { background: rgba(255, 255, 255, 0.1); border: 2px solid rgba(127, 255, 0, 0.3); color: #7FFF00; padding: 10px 20px; border-radius: 10px; cursor: pointer; font-size: 1em; transition: all 0.3s; }
+        .back-btn:hover { background: rgba(127, 255, 0, 0.2); }
+        .cart-content { background: rgba(255, 255, 255, 0.05); backdrop-filter: blur(10px); border: 2px solid rgba(127, 255, 0, 0.3); border-radius: 15px; padding: 30px; }
+        .cart-item { display: flex; justify-content: space-between; align-items: center; padding: 15px; background: rgba(255, 255, 255, 0.03); border-radius: 10px; margin-bottom: 10px; }
+        .cart-controls { display: flex; gap: 10px; align-items: center; }
+        .qty-btn { background: rgba(127, 255, 0, 0.2); border: 1px solid rgba(127, 255, 0, 0.4); color: #7FFF00; width: 35px; height: 35px; border-radius: 5px; cursor: pointer; font-size: 1.3em; display: flex; align-items: center; justify-content: center; }
+        .remove-btn { background: rgba(255, 100, 100, 0.2); border: 1px solid rgba(255, 100, 100, 0.4); color: #ff6464; padding: 8px 15px; border-radius: 5px; cursor: pointer; }
+        .delivery-zone { margin: 20px 0; padding: 20px; background: rgba(255, 255, 255, 0.03); border-radius: 10px; }
+        .zone-select { width: 100%; padding: 12px; background: rgba(255, 255, 255, 0.1); border: 2px solid rgba(127, 255, 0, 0.3); border-radius: 10px; color: #e0e0e0; font-size: 1em; margin-top: 10px; }
+        .total-section { border-top: 2px solid rgba(127, 255, 0, 0.3); padding-top: 20px; margin-top: 20px; }
+        .total-line { display: flex; justify-content: space-between; padding: 10px 0; font-size: 1.1em; }
+        .total-final { font-size: 1.5em; color: #7FFF00; font-weight: bold; }
+        .form-group { margin-bottom: 20px; }
+        .form-group label { display: block; margin-bottom: 8px; color: #7FFF00; font-weight: bold; }
+        .form-group input, .form-group textarea, .form-group select { width: 100%; padding: 12px; background: rgba(255, 255, 255, 0.1); border: 2px solid rgba(127, 255, 0, 0.3); border-radius: 10px; color: #e0e0e0; font-size: 1em; }
+        .form-group textarea { resize: vertical; min-height: 100px; }
+        .map-container { width: 100%; height: 400px; border-radius: 10px; overflow: hidden; margin-top: 10px; border: 2px solid rgba(127, 255, 0, 0.3); }
+        .selected-address { margin-top: 10px; padding: 10px; background: rgba(127, 255, 0, 0.1); border-radius: 8px; color: #7FFF00; }
+        .submit-btn { width: 100%; background: linear-gradient(135deg, #7FFF00 0%, #32CD32 100%); border: none; color: #000; padding: 15px; border-radius: 10px; font-size: 1.2em; font-weight: bold; cursor: pointer; transition: all 0.3s; }
+        .submit-btn:hover { transform: scale(1.02); box-shadow: 0 10px 30px rgba(127, 255, 0, 0.4); }
+        .cart-badge { position: fixed; bottom: 30px; right: 30px; background: linear-gradient(135deg, #7FFF00 0%, #32CD32 100%); color: #000; width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.5em; font-weight: bold; cursor: pointer; box-shadow: 0 5px 20px rgba(127, 255, 0, 0.4); transition: all 0.3s; z-index: 1000; }
+        .cart-badge:hover { transform: scale(1.1); }
+        .qr-code { text-align: center; padding: 30px; background: white; border-radius: 15px; margin: 30px auto; max-width: 400px; }
+        .order-summary { background: rgba(255, 255, 255, 0.03); padding: 20px; border-radius: 10px; margin: 20px 0; }
+        .success-icon { font-size: 5em; text-align: center; margin: 20px 0; }
+        .contact-buttons { display: flex; gap: 15px; margin: 20px 0; }
+        .contact-btn { flex: 1; padding: 15px; border-radius: 10px; border: 2px solid rgba(127, 255, 0, 0.3); background: rgba(127, 255, 0, 0.1); color: #7FFF00; text-decoration: none; text-align: center; font-weight: bold; transition: all 0.3s; }
+        .contact-btn:hover { background: rgba(127, 255, 0, 0.2); transform: translateY(-2px); }
+        .empty-cart { text-align: center; padding: 60px 20px; color: #a0a0a0; }
+        .empty-cart-icon { font-size: 5em; margin-bottom: 20px; opacity: 0.3; }
+        .leaflet-container { background: #1a1a1a; }
+        .leaflet-popup-content-wrapper { background: rgba(26, 26, 26, 0.95); color: #e0e0e0; }
+        .leaflet-popup-tip { background: rgba(26, 26, 26, 0.95); }
         @media (max-width: 768px) {
-            h1 {
-                font-size: 2em;
-            }
-            
-            .products {
-                grid-template-columns: 1fr;
-            }
-
-            .contact-buttons {
-                flex-direction: column;
-            }
-
-            .cart-page-header {
-                flex-direction: column;
-                gap: 15px;
-            }
+            h1 { font-size: 2em; }
+            .products { grid-template-columns: 1fr; }
+            .contact-buttons { flex-direction: column; }
+            .cart-page-header { flex-direction: column; gap: 15px; }
         }
     </style>
 </head>
@@ -491,13 +269,15 @@
             </header>
 
             <div class="filters" id="filters"></div>
-            <div class="products" id="products"></div>
+            <div class="products" id="products">
+                <div class="loading">⏳ Loading products...</div>
+            </div>
 
             <div class="cart-badge" onclick="goToCart()" id="cartBadge">0</div>
         </div>
     </div>
 
-    <!-- Cart Page -->
+    <!-- Cart, Order и Success Pages остаются без изменений -->
     <div class="page" id="cartPage">
         <div class="container">
             <div class="cart-page-header">
@@ -505,12 +285,10 @@
                 <h2 style="color: #7FFF00;" id="cartTitle">🛒 Your Cart</h2>
                 <div></div>
             </div>
-
             <div id="cartContent"></div>
         </div>
     </div>
 
-    <!-- Order Form Page -->
     <div class="page" id="orderPage">
         <div class="container">
             <div class="cart-page-header">
@@ -518,24 +296,20 @@
                 <h2 style="color: #7FFF00;" id="orderTitle">📋 Order Details</h2>
                 <div></div>
             </div>
-
             <div class="cart-content">
                 <div class="form-group">
                     <label id="nameLabel">Name:</label>
                     <input type="text" id="customerName" placeholder="Your name" required>
                 </div>
-
                 <div class="form-group">
                     <label id="phoneLabel">Phone:</label>
                     <input type="tel" id="customerPhone" placeholder="+66..." required>
                 </div>
-
                 <div class="form-group">
                     <label id="addressLabel">Delivery Address (drag marker to your location):</label>
                     <div class="map-container" id="map"></div>
                     <div class="selected-address" id="selectedAddress">Move the marker to select your location</div>
                 </div>
-
                 <div class="form-group">
                     <label id="timeLabel">Delivery Time:</label>
                     <select id="deliveryTime">
@@ -546,37 +320,31 @@
                         <option>Tomorrow 18:00-22:00</option>
                     </select>
                 </div>
-
                 <div class="form-group">
                     <label id="commentLabel">Comment (optional):</label>
                     <textarea id="customerComment" placeholder="Any special requests?"></textarea>
                 </div>
-
                 <button class="submit-btn" onclick="submitOrder()" id="confirmBtn">✅ Confirm Order</button>
             </div>
         </div>
     </div>
 
-    <!-- Success Page -->
     <div class="page" id="successPage">
         <div class="container">
             <div class="cart-content">
                 <div class="success-icon">✅</div>
                 <h2 style="color: #7FFF00; text-align: center; margin-bottom: 20px;" id="successTitle">Order Confirmed!</h2>
-                
                 <div class="order-summary">
                     <p style="text-align: center; font-size: 1.5em; margin-bottom: 20px;">
                         <span id="orderNumberLabel">Order #</span><span id="orderNumber" style="color: #7FFF00;"></span>
                     </p>
                     <div id="orderSummary"></div>
                 </div>
-
                 <div class="qr-code">
                     <h3 style="color: #000; margin-bottom: 15px;" id="paymentTitle">💳 Payment via PromptPay</h3>
                     <div id="qrCodeContainer"></div>
                     <p style="color: #000; margin-top: 15px; font-weight: bold;" id="paymentAmount"></p>
                 </div>
-
                 <div style="background: rgba(255, 255, 255, 0.05); padding: 20px; border-radius: 10px; margin: 20px 0;">
                     <h3 style="color: #7FFF00; margin-bottom: 15px;" id="nextStepsTitle">📱 Next Steps:</h3>
                     <ol style="line-height: 2; padding-left: 20px;">
@@ -585,84 +353,63 @@
                         <li id="step3">Delivery within the selected time slot</li>
                     </ol>
                 </div>
-
                 <div class="contact-buttons">
                     <a href="https://wa.me/66611483677" class="contact-btn" target="_blank">📲 WhatsApp</a>
                     <a href="https://line.me/R/ti/p/%40spirit420" class="contact-btn" target="_blank">💬 LINE</a>
                 </div>
-
                 <button class="submit-btn" onclick="newOrder()" id="newOrderBtn">🔄 Make Another Order</button>
             </div>
         </div>
     </div>
 
-    <!-- Leaflet JS -->
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-    <!-- QR Code Library -->
     <script src="https://cdn.jsdelivr.net/npm/qrcode@1.5.3/build/qrcode.min.js"></script>
     
     <script>
-        const products = [
-            {name: 'Miami', type: 'sativa', thc: 27, price: 250, category: 'sorts'},
-            {name: 'Dosi Dos', type: 'indica', thc: 27, price: 250, category: 'sorts'},
-            {name: 'Frozen Joke', type: 'indica', thc: 27, price: 250, category: 'sorts'},
-            {name: 'Rainbow Inferno', type: 'sativa', thc: 27, price: 300, category: 'sorts'},
-            {name: 'LA', type: 'sativa', thc: 24, price: 150, category: 'sorts'},
-            {name: 'Super Boof', type: 'hybrid', thc: 27, price: 300, category: 'sorts'},
-            {name: 'Tropicana Chery', type: 'indica', thc: 27, price: 300, category: 'sorts'},
-            {name: 'Lemon Haze', type: 'sativa', thc: 25, price: 150, category: 'sorts'},
-            {name: 'Orange Haze', type: 'sativa', thc: 27, price: 250, category: 'sorts'},
-            {name: 'Diamond Runt', type: 'indica', thc: 27, price: 250, category: 'sorts'},
-            {name: 'Frozen Joke Joint', type: 'indica', thc: 27, price: 200, category: 'joints', desc: '1 pcs'},
-            {name: 'Double Kush Cake Joint', type: 'hybrid', thc: 26, price: 200, category: 'joints', desc: '1 pcs'},
-            {name: 'Double Kush Cake Joint', type: 'sativa', thc: 26, price: 100, category: 'joints', desc: '1 pcs', special: 'buy 3 get 4'}
-        ];
-
+        // ============ КОНФИГУРАЦИЯ API ============
+        // ЗАМЕНИ на свой URL от Railway!
+        const RAILWAY_API = 'https://твой-railway-api.railway.app/api/products';
+        
+        let products = []; // Будем загружать из API
         const translations = {
             en: {
                 subtitle: 'Licensed cannabis shop, Phuket',
-                disclaimer: '⚠️ This website is for informational purposes only. Access limited to persons 20+ years of age. By continuing, you confirm compliance with Thai law.',
+                disclaimer: '⚠️ This website is for informational purposes only. Access limited to persons 20+ years of age.',
                 allProducts: 'All Products', sativa: '☀️ Sativa', indica: '🌙 Indica', hybrid: '🌓 Hybrid', prerolled: '🚬 Prerolled',
                 cartTitle: '🛒 Your Cart', zoneLabel: '📍 Delivery Zone:', subtotalLabel: 'Subtotal:', deliveryLabel: 'Delivery:', totalLabel: 'TOTAL:',
                 proceedBtn: 'Proceed to Order →', orderTitle: '📋 Order Details', nameLabel: 'Name:', phoneLabel: 'Phone:',
-                addressLabel: 'Delivery Address (drag marker to your location):', timeLabel: 'Delivery Time:', commentLabel: 'Comment (optional):',
+                addressLabel: 'Delivery Address (drag marker):', timeLabel: 'Delivery Time:', commentLabel: 'Comment (optional):',
                 confirmBtn: '✅ Confirm Order', successTitle: 'Order Confirmed!', orderNumberLabel: 'Order #',
                 paymentTitle: '💳 Payment via PromptPay', nextStepsTitle: '📱 Next Steps:',
-                step1: 'Scan QR code and pay via PromptPay (or pay cash to courier)',
-                step2: 'We will contact you via WhatsApp or LINE shortly',
-                step3: 'Delivery within the selected time slot',
+                step1: 'Scan QR code and pay via PromptPay', step2: 'We will contact you shortly', step3: 'Delivery within selected time',
                 newOrderBtn: '🔄 Make Another Order', addToCart: 'Add to Cart', emptyCart: 'Your cart is empty',
-                startShopping: 'Start Shopping'
+                startShopping: 'Start Shopping', loadingError: 'Failed to load products. Please refresh the page.'
             },
             ru: {
-                subtitle: 'Лицензированный магазин каннабиса, Пхукет',
-                disclaimer: '⚠️ Этот сайт носит исключительно информационный характер. Доступ только для лиц 20+. Продолжая, вы подтверждаете соблюдение законов Таиланда.',
+                subtitle: 'Лицензированный магазин, Пхукет',
+                disclaimer: '⚠️ Этот сайт носит информационный характер. Для лиц 20+.',
                 allProducts: 'Все товары', sativa: '☀️ Sativa', indica: '🌙 Indica', hybrid: '🌓 Hybrid', prerolled: '🚬 Преролы',
                 cartTitle: '🛒 Ваша корзина', zoneLabel: '📍 Зона доставки:', subtotalLabel: 'Сумма:', deliveryLabel: 'Доставка:', totalLabel: 'ИТОГО:',
-                proceedBtn: 'Оформить заказ →', orderTitle: '📋 Данные заказа', nameLabel: 'Имя:', phoneLabel: 'Телефон:',
-                addressLabel: 'Адрес доставки (перетащите маркер на карте):', timeLabel: 'Время доставки:', commentLabel: 'Комментарий (необязательно):',
-                confirmBtn: '✅ Подтвердить заказ', successTitle: 'Заказ подтвержден!', orderNumberLabel: 'Заказ №',
-                paymentTitle: '💳 Оплата через PromptPay', nextStepsTitle: '📱 Что дальше:',
-                step1: 'Отсканируйте QR-код и оплатите через PromptPay (или наличными курьеру)',
-                step2: 'Мы свяжемся с вами через WhatsApp или LINE в ближайшее время',
-                step3: 'Доставка в выбранное время',
-                newOrderBtn: '🔄 Сделать новый заказ', addToCart: 'В корзину', emptyCart: 'Корзина пуста',
-                startShopping: 'Начать покупки'
+                proceedBtn: 'Оформить →', orderTitle: '📋 Данные заказа', nameLabel: 'Имя:', phoneLabel: 'Телефон:',
+                addressLabel: 'Адрес (перетащите маркер):', timeLabel: 'Время:', commentLabel: 'Комментарий:',
+                confirmBtn: '✅ Подтвердить', successTitle: 'Заказ подтвержден!', orderNumberLabel: 'Заказ №',
+                paymentTitle: '💳 Оплата PromptPay', nextStepsTitle: '📱 Что дальше:',
+                step1: 'Отсканируйте QR и оплатите', step2: 'Мы свяжемся с вами', step3: 'Доставка в выбранное время',
+                newOrderBtn: '🔄 Новый заказ', addToCart: 'В корзину', emptyCart: 'Корзина пуста',
+                startShopping: 'Начать покупки', loadingError: 'Не удалось загрузить товары. Обновите страницу.'
             },
             th: {
-                subtitle: 'ร้านกัญชาที่ได้รับใบอนุญาต ภูเก็ต',
-                disclaimer: '⚠️ เว็บไซต์นี้จัดทำขึ้นเพื่อให้ข้อมูลเท่านั้น สำหรับผู้ที่มีอายุ 20 ปีขึ้นไปเท่านั้น',
+                subtitle: 'ร้านที่ได้รับใบอนุญาต ภูเก็ต',
+                disclaimer: '⚠️ เว็บไซต์นี้เพื่อข้อมูลเท่านั้น สำหรับอายุ 20+',
                 allProducts: 'สินค้าทั้งหมด', sativa: '☀️ Sativa', indica: '🌙 Indica', hybrid: '🌓 Hybrid', prerolled: '🚬 พรีโรล',
-                cartTitle: '🛒 ตะกร้าของคุณ', zoneLabel: '📍 เขตจัดส่ง:', subtotalLabel: 'รวม:', deliveryLabel: 'ค่าจัดส่ง:', totalLabel: 'ทั้งหมด:',
-                proceedBtn: 'ดำเนินการสั่งซื้อ →', orderTitle: '📋 รายละเอียดคำสั่งซื้อ', nameLabel: 'ชื่อ:', phoneLabel: 'โทรศัพท์:',
-                addressLabel: 'ที่อยู่จัดส่ง (ลากตัวหมุดบนแผนที่):', timeLabel: 'เวลาจัดส่ง:', commentLabel: 'หมายเหตุ:',
-                confirmBtn: '✅ ยืนยันคำสั่งซื้อ', successTitle: 'ยืนยันคำสั่งซื้อแล้ว!', orderNumberLabel: 'คำสั่งซื้อ #',
-                paymentTitle: '💳 ชำระเงินผ่าน PromptPay', nextStepsTitle: '📱 ขั้นตอนถัดไป:',
-                step1: 'สแกน QR code และชำระผ่าน PromptPay',
-                step2: 'เราจะติดต่อคุณผ่าน WhatsApp หรือ LINE',
-                step3: 'จัดส่งภายในช่วงเวลาที่เลือก',
-                newOrderBtn: '🔄 สั่งซื้อใหม่', addToCart: 'เพิ่มลงตะกร้า', emptyCart: 'ตะกร้าว่าง',
-                startShopping: 'เริ่มช็อปปิ้ง'
+                cartTitle: '🛒 ตะกร้า', zoneLabel: '📍 เขตจัดส่ง:', subtotalLabel: 'รวม:', deliveryLabel: 'ค่าส่ง:', totalLabel: 'ทั้งหมด:',
+                proceedBtn: 'ดำเนินการ →', orderTitle: '📋 รายละเอียด', nameLabel: 'ชื่อ:', phoneLabel: 'โทร:',
+                addressLabel: 'ที่อยู่ (ลากหมุด):', timeLabel: 'เวลา:', commentLabel: 'หมายเหตุ:',
+                confirmBtn: '✅ ยืนยัน', successTitle: 'ยืนยันแล้ว!', orderNumberLabel: 'คำสั่งซื้อ #',
+                paymentTitle: '💳 ชำระผ่าน PromptPay', nextStepsTitle: '📱 ขั้นตอน:',
+                step1: 'สแกน QR และชำระ', step2: 'เราจะติดต่อคุณ', step3: 'จัดส่งตามเวลา',
+                newOrderBtn: '🔄 สั่งใหม่', addToCart: 'ใส่ตะกร้า', emptyCart: 'ตะกร้าว่าง',
+                startShopping: 'ช็อปปิ้ง', loadingError: 'โหลดสินค้าไม่สำเร็จ กรุณารีเฟรช'
             }
         };
 
@@ -670,10 +417,38 @@
         let currentFilter = 'all';
         let currentLang = 'en';
         let map, marker;
-        let selectedLocation = {lat: 7.884528, lng: 98.365056}; // Phuket Town
+        let selectedLocation = {lat: 7.884528, lng: 98.365056};
         let selectedAddress = '';
-
         const typeEmojis = {sativa: '☀️', indica: '🌙', hybrid: '🌓'};
+
+        // ============ ЗАГРУЗКА ТОВАРОВ ИЗ API ============
+        async function loadProducts() {
+            try {
+                const response = await fetch(RAILWAY_API);
+                const data = await response.json();
+                
+                if (data.success && data.products) {
+                    products = data.products;
+                    console.log(`✅ Loaded ${products.length} products from API`);
+                    renderProducts();
+                } else {
+                    throw new Error('Invalid API response');
+                }
+            } catch (error) {
+                console.error('Failed to load products:', error);
+                const container = document.getElementById('products');
+                const t = translations[currentLang];
+                container.innerHTML = `
+                    <div class="error-message">
+                        ❌ ${t.loadingError}
+                        <br><br>
+                        <button class="add-btn" onclick="loadProducts()" style="max-width: 300px; margin: 20px auto;">
+                            🔄 Retry
+                        </button>
+                    </div>
+                `;
+            }
+        }
 
         function setLang(lang) {
             currentLang = lang;
@@ -705,24 +480,34 @@
         function renderProducts() {
             const t = translations[currentLang];
             const container = document.getElementById('products');
+            
+            if (products.length === 0) {
+                container.innerHTML = '<div class="loading">⏳ Loading products...</div>';
+                return;
+            }
+            
             container.innerHTML = '';
             
-            products
-                .filter(p => currentFilter === 'all' || p.type === currentFilter || (currentFilter === 'joints' && p.category === 'joints'))
-                .forEach((product, index) => {
-                    const card = document.createElement('div');
-                    card.className = 'product-card';
-                    card.innerHTML = `
-                        <div class="product-name">${product.name}</div>
-                        <div class="product-type">${typeEmojis[product.type]} ${product.type.charAt(0).toUpperCase() + product.type.slice(1)}</div>
-                        <div class="product-thc">💎 THC: ${product.thc}%</div>
-                        ${product.desc ? `<div style="opacity: 0.8;">${product.desc}</div>` : ''}
-                        ${product.special ? `<div class="product-special">🎁 ${product.special}</div>` : ''}
-                        <div class="product-price">฿${product.price}</div>
-                        <button class="add-btn" onclick="addToCart(${index})">${t.addToCart}</button>
-                    `;
-                    container.appendChild(card);
-                });
+            const filtered = products.filter(p => 
+                currentFilter === 'all' || 
+                p.type === currentFilter || 
+                (currentFilter === 'joints' && p.category === 'joints')
+            );
+            
+            filtered.forEach((product, index) => {
+                const card = document.createElement('div');
+                card.className = 'product-card';
+                card.innerHTML = `
+                    <div class="product-name">${product.name}</div>
+                    <div class="product-type">${typeEmojis[product.type]} ${product.type.charAt(0).toUpperCase() + product.type.slice(1)}</div>
+                    <div class="product-thc">💎 THC: ${product.thc}%</div>
+                    ${product.desc ? `<div style="opacity: 0.8;">${product.desc}</div>` : ''}
+                    ${product.special ? `<div class="product-special">🎁 ${product.special}</div>` : ''}
+                    <div class="product-price">฿${product.price}</div>
+                    <button class="add-btn" onclick="addToCart(${products.indexOf(product)})">${t.addToCart}</button>
+                `;
+                container.appendChild(card);
+            });
         }
 
         function filterProducts(filter) {
@@ -734,13 +519,11 @@
         function addToCart(index) {
             const product = products[index];
             const existing = cart.find(item => item.name === product.name);
-            
             if (existing) {
                 existing.quantity++;
             } else {
                 cart.push({...product, quantity: 1});
             }
-            
             updateCartBadge();
         }
 
@@ -783,7 +566,6 @@
             }
 
             let html = '<div class="cart-content">';
-            
             cart.forEach((item, index) => {
                 html += `
                     <div class="cart-item">
@@ -805,43 +587,29 @@
                 <div class="delivery-zone">
                     <label style="color: #7FFF00; font-weight: bold;">${t.zoneLabel}</label>
                     <select class="zone-select" id="deliveryZone" onchange="updateTotal()">
-                        <option value="0">Select delivery zone</option>
-                        <option value="0">Phuket Town Center - Free</option>
+                        <option value="0">Select zone</option>
+                        <option value="0">Phuket Town - Free</option>
                         <option value="100">Chalong, Rawai - ฿100</option>
                         <option value="150">Patong, Karon, Kata - ฿150</option>
-                        <option value="200">Bang Tao, Surin, Kamala - ฿200</option>
+                        <option value="200">Bang Tao, Surin - ฿200</option>
                         <option value="250">Other areas - ฿250</option>
                     </select>
                 </div>
-
                 <div class="total-section">
-                    <div class="total-line">
-                        <span>${t.subtotalLabel}</span>
-                        <span id="subtotal">฿0</span>
-                    </div>
-                    <div class="total-line">
-                        <span>${t.deliveryLabel}</span>
-                        <span id="deliveryCost">฿0</span>
-                    </div>
-                    <div class="total-line total-final">
-                        <span>${t.totalLabel}</span>
-                        <span id="total">฿0</span>
-                    </div>
+                    <div class="total-line"><span>${t.subtotalLabel}</span><span id="subtotal">฿0</span></div>
+                    <div class="total-line"><span>${t.deliveryLabel}</span><span id="deliveryCost">฿0</span></div>
+                    <div class="total-line total-final"><span>${t.totalLabel}</span><span id="total">฿0</span></div>
                 </div>
-
                 <button class="submit-btn" onclick="proceedToOrder()">${t.proceedBtn}</button>
             </div>
             `;
-
             container.innerHTML = html;
             updateTotal();
         }
 
         function changeQty(index, change) {
             cart[index].quantity += change;
-            if (cart[index].quantity <= 0) {
-                cart.splice(index, 1);
-            }
+            if (cart[index].quantity <= 0) cart.splice(index, 1);
             updateCartBadge();
             renderCart();
         }
@@ -856,7 +624,6 @@
             const subtotal = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
             const deliveryCost = parseInt(document.getElementById('deliveryZone')?.value || 0);
             const total = subtotal + deliveryCost;
-            
             if (document.getElementById('subtotal')) {
                 document.getElementById('subtotal').textContent = `฿${subtotal}`;
                 document.getElementById('deliveryCost').textContent = `฿${deliveryCost}`;
@@ -873,51 +640,35 @@
             goToOrder();
         }
 
-        // Leaflet Map Initialization
         function initMap() {
-            // Create map
             map = L.map('map').setView([selectedLocation.lat, selectedLocation.lng], 15);
-
-            // Add OpenStreetMap tiles
             L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-                attribution: '© OpenStreetMap contributors',
+                attribution: '© OpenStreetMap',
                 maxZoom: 19
             }).addTo(map);
-
-            // Create draggable marker
-            marker = L.marker([selectedLocation.lat, selectedLocation.lng], {
-                draggable: true
-            }).addTo(map);
-
-            // Update location when marker is dragged
+            marker = L.marker([selectedLocation.lat, selectedLocation.lng], {draggable: true}).addTo(map);
             marker.on('dragend', function(e) {
                 const pos = marker.getLatLng();
                 selectedLocation = {lat: pos.lat, lng: pos.lng};
                 getAddress(selectedLocation);
             });
-
-            // Get initial address
-            getAddress(selectedLocation);
-
-            // Add click to move marker
             map.on('click', function(e) {
                 marker.setLatLng(e.latlng);
                 selectedLocation = {lat: e.latlng.lat, lng: e.latlng.lng};
                 getAddress(selectedLocation);
             });
+            getAddress(selectedLocation);
         }
 
-        // Reverse geocoding using Nominatim (OpenStreetMap)
         function getAddress(location) {
             fetch(`https://nominatim.openstreetmap.org/reverse?format=json&lat=${location.lat}&lon=${location.lng}`)
-                .then(response => response.json())
+                .then(r => r.json())
                 .then(data => {
                     selectedAddress = data.display_name;
                     document.getElementById('selectedAddress').textContent = selectedAddress;
                 })
-                .catch(error => {
-                    console.error('Geocoding error:', error);
-                    selectedAddress = `Lat: ${location.lat.toFixed(6)}, Lng: ${location.lng.toFixed(6)}`;
+                .catch(() => {
+                    selectedAddress = `${location.lat.toFixed(6)}, ${location.lng.toFixed(6)}`;
                     document.getElementById('selectedAddress').textContent = selectedAddress;
                 });
         }
@@ -929,7 +680,7 @@
             const comment = document.getElementById('customerComment').value;
             
             if (!name || !phone || !selectedAddress) {
-                alert('Please fill in all required fields and select location on map!');
+                alert('Please fill all fields!');
                 return;
             }
             
@@ -939,82 +690,53 @@
             const total = subtotal + delivery;
             
             const orderData = {
-                orderId, 
-                items: cart, 
-                name, 
-                phone, 
-                address: selectedAddress,
-                location: selectedLocation,
-                time, 
-                comment,
-                subtotal: `฿${subtotal}`,
-                delivery: `฿${delivery}`,
-                total: `฿${total}`
+                orderId, items: cart, name, phone, 
+                address: selectedAddress, location: selectedLocation,
+                time, comment,
+                subtotal: `฿${subtotal}`, delivery: `฿${delivery}`, total: `฿${total}`
             };
             
-            // Send to Telegram
             sendOrderToTelegram(orderData);
-            
             showSuccessPage(orderData);
         }
 
         async function sendOrderToTelegram(orderData) {
             try {
-                const API_URL = window.location.hostname === 'localhost' 
-                    ? 'http://localhost:3000/api/telegram'
-                    : '/api/telegram';
-                
-                const response = await fetch(API_URL, {
+                const response = await fetch('/api/telegram', {
                     method: 'POST',
                     headers: {'Content-Type': 'application/json'},
                     body: JSON.stringify(orderData)
                 });
-                
-                const result = await response.json();
-                
-                if (!response.ok) {
-                    console.error('Failed to send order notification:', result);
-                } else {
-                    console.log('✅ Order sent to admin:', result);
+                if (response.ok) {
+                    console.log('✅ Order sent');
                 }
             } catch (error) {
-                console.error('Error sending order:', error);
+                console.error('Error:', error);
             }
         }
 
         function showSuccessPage(order) {
             document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
             document.getElementById('successPage').classList.add('active');
-            
             document.getElementById('orderNumber').textContent = order.orderId;
-            
-            const summary = document.getElementById('orderSummary');
             const t = translations[currentLang];
-            summary.innerHTML = `
+            document.getElementById('orderSummary').innerHTML = `
                 <p><strong>${t.nameLabel}</strong> ${order.name}</p>
                 <p><strong>${t.phoneLabel}</strong> ${order.phone}</p>
                 <p><strong>${t.totalLabel}</strong> ${order.total}</p>
             `;
-            
             const totalAmount = parseInt(order.total.replace('฿', ''));
             generatePromptPayQR('0611483677', totalAmount);
-            
             document.getElementById('paymentAmount').textContent = `Amount: ${order.total}`;
             window.scrollTo({top: 0, behavior: 'smooth'});
         }
 
-        function generatePromptPayQR(phoneNumber, amount) {
+        function generatePromptPayQR(phone, amount) {
             const qrContainer = document.getElementById('qrCodeContainer');
             qrContainer.innerHTML = '';
-            
-            const payload = generatePromptPayPayload(phoneNumber, amount);
-            
+            const payload = generatePromptPayPayload(phone, amount);
             QRCode.toCanvas(payload, {width: 250, margin: 2}, (error, canvas) => {
-                if (error) {
-                    qrContainer.innerHTML = '<p style="color: #000;">QR Code generation failed</p>';
-                } else {
-                    qrContainer.appendChild(canvas);
-                }
+                if (!error) qrContainer.appendChild(canvas);
             });
         }
 
@@ -1033,7 +755,9 @@
             goToCatalog();
         }
 
+        // Запускаем при загрузке страницы
         updateTexts();
+        loadProducts();
     </script>
 </body>
 </html>
