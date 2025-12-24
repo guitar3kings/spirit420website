@@ -4,6 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>spirit420 - Cannabis Shop Phuket</title>
+    
+    <!-- Leaflet CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    
     <style>
         * {
             margin: 0;
@@ -435,6 +439,20 @@
             opacity: 0.3;
         }
 
+        /* Leaflet map dark theme */
+        .leaflet-container {
+            background: #1a1a1a;
+        }
+
+        .leaflet-popup-content-wrapper {
+            background: rgba(26, 26, 26, 0.95);
+            color: #e0e0e0;
+        }
+
+        .leaflet-popup-tip {
+            background: rgba(26, 26, 26, 0.95);
+        }
+
         @media (max-width: 768px) {
             h1 {
                 font-size: 2em;
@@ -454,7 +472,6 @@
             }
         }
     </style>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBFw0Qbyq9zTFTd-tUY6dZWTgaQzuU17R8&libraries=places"></script>
 </head>
 <body>
     <!-- Catalog Page -->
@@ -579,7 +596,11 @@
         </div>
     </div>
 
+    <!-- Leaflet JS -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <!-- QR Code Library -->
     <script src="https://cdn.jsdelivr.net/npm/qrcode@1.5.3/build/qrcode.min.js"></script>
+    
     <script>
         const products = [
             {name: 'Miami', type: 'sativa', thc: 27, price: 250, category: 'sorts'},
@@ -649,7 +670,7 @@
         let currentFilter = 'all';
         let currentLang = 'en';
         let map, marker;
-        let selectedLocation = {lat: 7.884528, lng: 98.365056};
+        let selectedLocation = {lat: 7.884528, lng: 98.365056}; // Phuket Town
         let selectedAddress = '';
 
         const typeEmojis = {sativa: '☀️', indica: '🌙', hybrid: '🌓'};
@@ -852,37 +873,53 @@
             goToOrder();
         }
 
+        // Leaflet Map Initialization
         function initMap() {
-            map = new google.maps.Map(document.getElementById('map'), {
-                center: selectedLocation,
-                zoom: 15
-            });
+            // Create map
+            map = L.map('map').setView([selectedLocation.lat, selectedLocation.lng], 15);
 
-            marker = new google.maps.Marker({
-                position: selectedLocation,
-                map: map,
+            // Add OpenStreetMap tiles
+            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                attribution: '© OpenStreetMap contributors',
+                maxZoom: 19
+            }).addTo(map);
+
+            // Create draggable marker
+            marker = L.marker([selectedLocation.lat, selectedLocation.lng], {
                 draggable: true
-            });
+            }).addTo(map);
 
-            marker.addListener('dragend', function() {
-                selectedLocation = {
-                    lat: marker.getPosition().lat(),
-                    lng: marker.getPosition().lng()
-                };
+            // Update location when marker is dragged
+            marker.on('dragend', function(e) {
+                const pos = marker.getLatLng();
+                selectedLocation = {lat: pos.lat, lng: pos.lng};
                 getAddress(selectedLocation);
             });
 
+            // Get initial address
             getAddress(selectedLocation);
+
+            // Add click to move marker
+            map.on('click', function(e) {
+                marker.setLatLng(e.latlng);
+                selectedLocation = {lat: e.latlng.lat, lng: e.latlng.lng};
+                getAddress(selectedLocation);
+            });
         }
 
+        // Reverse geocoding using Nominatim (OpenStreetMap)
         function getAddress(location) {
-            const geocoder = new google.maps.Geocoder();
-            geocoder.geocode({location: location}, (results, status) => {
-                if (status === 'OK' && results[0]) {
-                    selectedAddress = results[0].formatted_address;
+            fetch(`https://nominatim.openstreetmap.org/reverse?format=json&lat=${location.lat}&lon=${location.lng}`)
+                .then(response => response.json())
+                .then(data => {
+                    selectedAddress = data.display_name;
                     document.getElementById('selectedAddress').textContent = selectedAddress;
-                }
-            });
+                })
+                .catch(error => {
+                    console.error('Geocoding error:', error);
+                    selectedAddress = `Lat: ${location.lat.toFixed(6)}, Lng: ${location.lng.toFixed(6)}`;
+                    document.getElementById('selectedAddress').textContent = selectedAddress;
+                });
         }
 
         function submitOrder() {
@@ -915,7 +952,7 @@
                 total: `฿${total}`
             };
             
-            // Отправляем уведомление в Telegram
+            // Send to Telegram
             sendOrderToTelegram(orderData);
             
             showSuccessPage(orderData);
